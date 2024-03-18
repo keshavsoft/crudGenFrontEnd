@@ -4,18 +4,18 @@ var path = require('path');
 const posthtml = require('posthtml');
 const include = require('posthtml-include');
 
-var walk = function (dir, inFolderPath, inDestinationPath, done) {
+var walk = function (dir, inFolderPath, inDestinationPath, inBranchName, done) {
     var results = [];
     fs.readdir(dir, function (err, list) {
         if (err) return done(err);
         var i = 0;
         (function next() {
             var file = list[i++];
-            if (!file) return done(null, inFolderPath, inDestinationPath, results);
+            if (!file) return done(null, inFolderPath, inDestinationPath,inBranchName, results);
             file = path.resolve(dir, file);
             fs.stat(file, function (err, stat) {
                 if (stat && stat.isDirectory()) {
-                    walk(file, inFolderPath, inDestinationPath, function (err, inFolderPath, inDestinationPath, res) {
+                    walk(file, inFolderPath, inDestinationPath,inBranchName, function (err, inFolderPath, inDestinationPath,inBranchName, res) {
                         results = results.concat(res);
                         next();
                     });
@@ -28,7 +28,7 @@ var walk = function (dir, inFolderPath, inDestinationPath, done) {
     });
 };
 
-let CallBackFunc = (err, inFolderPath, inDestinationPath, results) => {
+let CallBackFunc = (err, inFolderPath, inDestinationPath,inBranchName, results) => {
     if (err) throw err;
     console.log("results : ", results);
     results.forEach(element => {
