@@ -30,7 +30,7 @@ var walk = function (dir, inFolderPath, inDestinationPath, done) {
 
 let CallBackFunc = (err, inFolderPath, inDestinationPath, results) => {
     if (err) throw err;
-
+    console.log("results : ", results);
     results.forEach(element => {
         const html = fs.readFileSync(element);
         let LoopInsidePath = path.parse(element);
