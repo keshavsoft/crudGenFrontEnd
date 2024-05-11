@@ -53,8 +53,8 @@ let jFLocalInsertDebit = (inData) => {
     let jVarLocalReturnArray = [];
 
     jVarLocalReturnArray = inData.map(element => {
-        if (element.amt < 0) {
-            element.Debit = element.amt * -1;
+        if (element.amt > 0) {
+            element.Debit = element.amt;
             element.DebitTotal += element.Debit;
         }
         // else{
@@ -71,8 +71,8 @@ let jFLocalInsertCredit = (inData) => {
     let jVarLocalReturnArray = [];
 
     jVarLocalReturnArray = inData.map(element => {
-        if (element.amt > 0) {
-            element.Credit = element.amt;
+        if (element.amt < 0) {
+            element.Credit = element.amt*-1;
             element.CreditTotal += element.Credit;
         }
         // else{
