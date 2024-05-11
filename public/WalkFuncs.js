@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import nunjucks from "nunjucks";
 
 var walk = function (dir, inFolderPath, inDestinationPath, done) {
     var results = [];
@@ -31,8 +32,9 @@ let CallBackFunc = (err, inFolderPath, inDestinationPath, results) => {
     results.forEach(element => {
         const html = fs.readFileSync(element);
         let LoopInsidePath = path.parse(element);
-        console.log("aaaaaaaaaa ; ", html);
-
+        // console.log("aaaaaaaaaa ; ", html.toString());
+        let data = nunjucks.renderString(html.toString(),{results});
+        fs.writeFileSync(element,data);
     });
 };
 
