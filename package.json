@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "frond end for crud gen repo",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fs-extra": "^11.2.0",
-    "posthtml": "^0.16.6",
-    "posthtml-include": "^2.0.1"
+    "directory-tree": "^3.5.1"
   }
 }
