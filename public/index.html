@@ -339,6 +339,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="./KWebSocket/index.html">
+                    <i class="bi bi-person-fill-add"></i></i>
+                    <span>webSocket</span>
+                </a>
+            </li>
+
             <!-- End Dashboard Nav -->
 
 
@@ -352,54 +359,6 @@
     </aside>
     <!-- End Sidebar-->
 
-
-    <main id="main" class="main">
-        <template id="Temp1">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td class="k1">Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-        </template>
-        <table id="table" data-detail-formatter="detailFormatter" data-detail-view="true"></table>
-
-        <table id="table1">
-            <thead>
-                <th>#</th>
-                <th data-field="ItemGroup">Item Group</th>
-                <th data-field="ItemName">Item Name</th>
-                <th>Add Ons</th>
-                <th data-field="Rate">Rate</th>
-                <th data-field="Pcs">Pcs</th>
-                <th data-field="Factory">Factory</th>
-                <th data-field="Delivery">Delivery</th>
-            </thead>
-        </table>
-    </main>
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
@@ -420,95 +379,9 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
-
-    <script>
-        var $table = $('#table')
-
-        function buildTable($el, cells, rows) {
-            var i; var j; var row
-            var columns = []
-            var data = []
-
-            for (i = 0; i < cells; i++) {
-                columns.push({
-                    field: 'field' + i,
-                    title: 'Cell' + i,
-                    sortable: true
-                })
-            }
-            for (i = 0; i < rows; i++) {
-                row = {}
-                for (j = 0; j < cells; j++) {
-                    row['field' + j] = 'Row-' + i + '-' + j
-                }
-                data.push(row);
-                data.push(row);
-                data.push(row);
-
-            }
-            $el.bootstrapTable({
-                columns: columns,
-                data: data,
-                detailView: cells > 1,
-                onExpandRow: (index, row, $detail) => {
-                    let template = document.getElementById("Temp1");
-
-
-                    const clone = template.content.cloneNode(true);
-                    let k2 = clone.querySelector(".k1");
-                    k2.innerHTML="6666666"
-                    console.log("aaaaaaa : ", k2);
-                    const s = new XMLSerializer();
-                    const str = s.serializeToString(clone);
-
-                    $detail.html(str);
-
-
-                    // console.log(index, row, $detail.html(document.querySelector("#Temp1").innerHTML));
-                }
-            });
-
-
-
-        }
-
-        function detailFormatter(index, row) {
-            var html = []
-            $.each(row, function (key, value) {
-                html.push('<p><b>' + key + ':</b> ' + value + '</p>')
-            })
-            return html.join('')
-        }
-        function expandTable($detail, cells) {
-            buildTable($detail.html('<table></table>').find('table'), cells, 1)
-        }
-        buildTable($table, 8, 1)
-
-        // $table.bootstrapTable({
-        //     data: [{
-        //         "ItemGroup": "Men",
-        //         "ItemName": "M Shirt DW",
-        //         "Rate": 60,
-        //         "Pcs": 6,
-        //         "Factory": "Vizag",
-        //         "Delivery": "17-04-2024"
-        //     },
-        //     {
-        //         "ItemGroup": "Women",
-        //         "ItemName": "W Shirt DW",
-        //         "Rate": 60,
-        //         "Pcs": 1,
-        //         "Factory": "Vizag",
-        //         "Delivery": "17-04-2024"
-        //     }]
-        // })
-
-    </script>
 
     <!-- Template Main JS File -->
-    <script src="./assets/js/main.js"></script>
+    <!-- <script src="./assets/js/main.js"></script> -->
 </body>
 
 </html>
