@@ -1,8 +1,11 @@
 // import nunjucks from "nunjucks";
 import dirTree from "directory-tree";
 
-import { walk, CallBackFunc } from "./WalkFuncs.js";
+import { walk } from "./WalkFuncs.js";
 
 const tree = dirTree("Jaya");
+// console.log(tree);
+walk(tree.children);
+// console.log(tree.children);
 
-walk(tree.children, "", "", CallBackFunc);
+// var result = walk(tree.children, "", "");
