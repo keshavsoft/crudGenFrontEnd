@@ -8,14 +8,9 @@
 </head>
 
 <body>
-    
-
-    {% for result in dir %}
-    {% if result.name==inName  %}
-    {{inName}}
-    {% endif %}
-    <a href="{{'#' if result.name==inName else result.name}}">{{ result.name }}</a>
-    {% endfor %}
+{% for result in dir %}
+    <a href="">{{ result.name }}</a>
+{% endfor %}
 </body>
 
 </html>

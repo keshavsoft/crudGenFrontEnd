@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "directory-tree": "^3.5.1"
+    "directory-tree": "^3.5.1",
+    "nunjucks": "^3.2.4"
   }
 }

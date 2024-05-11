@@ -8,11 +8,14 @@
 </head>
 
 <body>
+    
 
-    <h1>C:&#92;Users&#92;linkc&#92;OneDrive&#92;Desktop&#92;KeshavSoft&#92;FrontEnd&#92;crudGenFrontEnd&#92;public&#92;Jaya&#92;Screen1.html</h1>
-
-    <h1>C:&#92;Users&#92;linkc&#92;OneDrive&#92;Desktop&#92;KeshavSoft&#92;FrontEnd&#92;crudGenFrontEnd&#92;public&#92;Jaya&#92;Screen2.html</h1>
-
+    {% for result in dir %}
+    {% if result.name==inName  %}
+    {{inName}}
+    {% endif %}
+    <a href="{{'#' if result.name==inName else result.name}}">{{ result.name }}</a>
+    {% endfor %}
 </body>
 
 </html>

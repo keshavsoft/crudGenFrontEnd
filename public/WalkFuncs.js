@@ -4,25 +4,13 @@ import nunjucks from "nunjucks";
 
 var walk = function (dir, inFolderPath, inDestinationPath, done) {
     var results = [];
-    fs.readdir(dir, function (err, list) {
-        if (err) return done(err);
-        var i = 0;
-        (function next() {
-            var file = list[i++];
-            if (!file) return done(null, inFolderPath, inDestinationPath, results);
-            file = path.resolve(dir, file);
-            fs.stat(file, function (err, stat) {
-                if (stat && stat.isDirectory()) {
-                    walk(file, inFolderPath, inDestinationPath, function (err, inFolderPath, inDestinationPath, res) {
-                        results = results.concat(res);
-                        next();
-                    });
-                } else {
-                    results.push(file);
-                    next();
-                }
-            });
-        })();
+    console.log("dir : ", dir);
+
+    dir.forEach(element => {
+        const html = fs.readFileSync(element.path);
+        // console.log("aaaaaaaaaa ; ", html.toString());
+        let data = nunjucks.renderString(html.toString(), { inName: element.name, dir });
+        fs.writeFileSync(element.path, data);
     });
 };
 
@@ -30,11 +18,7 @@ let CallBackFunc = (err, inFolderPath, inDestinationPath, results) => {
     if (err) throw err;
 
     results.forEach(element => {
-        const html = fs.readFileSync(element);
-        let LoopInsidePath = path.parse(element);
-        // console.log("aaaaaaaaaa ; ", html.toString());
-        let data = nunjucks.renderString(html.toString(),{results});
-        fs.writeFileSync(element,data);
+        console.log("element : ", element);
     });
 };
 
