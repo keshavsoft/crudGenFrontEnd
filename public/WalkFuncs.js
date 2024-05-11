@@ -1,25 +1,29 @@
-import fs from "fs";
+import fs from "fs-extra";
 import path from "path";
 import nunjucks from "nunjucks";
+const results = [];
+var acutalResults = 0;
 
-var walk = function (dir, inFolderPath, inDestinationPath, done) {
-    var results = [];
-    console.log("dir : ", dir);
+var walk = function (tree) {
+    // console.log("dir", dir.length);
+    console.log("tree", tree);
+    tree.forEach(element => {
+        console.log(element.path);
+        if(!element.children) {
+        const html = fs.readFileSync(element.path, 'utf8');
 
-    dir.forEach(element => {
-        const html = fs.readFileSync(element.path);
-        // console.log("aaaaaaaaaa ; ", html.toString());
-        let data = nunjucks.renderString(html.toString(), { inName: element.name, dir });
-        fs.writeFileSync(element.path, data);
+        let data = nunjucks.renderString(html, {dir:tree});
+        fs.writeFileSync(`bin/${element.path}`, data, 'utf8');
+        }
     });
 };
 
-let CallBackFunc = (err, inFolderPath, inDestinationPath, results) => {
+let CallBackFunc = (err, inFolderPath, inDestinationPath) => {
+    console.log("came to callback function", results);
     if (err) throw err;
 
-    results.forEach(element => {
-        console.log("element : ", element);
-    });
+    // done(null, results);
+     return results;
 };
 
-export { walk, CallBackFunc };
+export { walk };
