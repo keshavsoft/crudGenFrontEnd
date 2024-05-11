@@ -367,26 +367,21 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <!-- <div class="spinner-border" id="SpinnerId" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div> -->
-
-                            <!-- <input type="number" placeholder="Enter Account Number" name="Account" id="AccountId">
-                            <button id="ShowButtonId">Show</button> -->
-                            <div class="row m-2">
-                                <div class="form-group mx-sm-3 mb-10">
-                                    <!-- <select class="form-select" aria-label="Default select example" id="AccountId">
-                                        <option select="selected">Select Account Name</option>
-                                    </select> -->
-                                    <label for="Account" class="col-sm-2 col-form-label">Choose Account Name:</label>
-                                    <input list="AccountId" name="Account" id="AccountId1">
+                            <div class="row mt-3">
+                                <label for="Account" class="col-sm-3 col-form-label">Choose Account Name:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="AccountId1" list="AccountId"
+                                        name="Account">
                                     <datalist id="AccountId"></datalist>
+                                </div>
+                                <div class="col-sm-2">
                                     <button class="btn btn-primary" type="button" id="ShowButtonId">
                                         <span class="spinner-border spinner-border-sm" id="SpinnerId"
                                             aria-hidden="true"></span>
                                         <span role="status">Show</span>
                                     </button>
                                 </div>
+                                
                             </div>
 
 
