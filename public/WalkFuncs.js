@@ -4,24 +4,31 @@ import nunjucks from "nunjucks";
 const results = [];
 var acutalResults = 0;
 
-var walk = function (tree) {
+var walk = function (tree, done) {
     tree.forEach(element => {
-        console.log(element);
-        if (!element.children) {
-            const html = fs.readFileSync(element.path, 'utf8');
+        console.log("element : ", element);
+        if ("children" in element) {
+            fs.mkdirSync("bin/Jaya1/Jaya");
 
-            let data = nunjucks.renderString(html, { dir: tree, inName:element.name });
-            fs.writeFileSync(`bin/${element.path}`, data, 'utf8');
-        }
+            walk(element.children, done);
+        } else {
+
+            let exists = fs.existsSync(fileName);
+
+            if (exists === false) {
+                writeFile(++i);
+            } else {
+                const html = fs.readFileSync(element.path, 'utf8');
+
+                let data = nunjucks.renderString(html, { dir: tree, inName: element.name });
+                fs.writeFileSync(`bin/${element.path}`, data, 'utf8');
+            };
+        };
     });
 };
 
-let CallBackFunc = (err, inFolderPath, inDestinationPath) => {
-    console.log("came to callback function", results);
-    if (err) throw err;
-
-    // done(null, results);
-    return results;
+let CallBackFunc = (tree) => {
+    console.log("came to callback function", tree);
 };
 
 export { walk };

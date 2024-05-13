@@ -44,7 +44,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
                 <img src="../assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block" id="BranchNameId"></span>
+                <span class="d-none d-lg-block" id="BranchNameId">{{Branch}}</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
@@ -292,25 +292,16 @@
                     <span>Home</span>
                 </a>
             </li>
-            
+            {% for result in dir %}
             <li class="nav-item">
-                <a class="nav-link collapsed" href="Screen1.html">
+                <a class="nav-link collapsed" href="{{'#' if result.name==inName else result.name}}">
 
                     <i class="bi bi-house-door-fill"></i>
-                    <span>Screen1.html</span>
+                    <span>{{result.name}}</span>
                 </a>
             </li>
 
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-
-                    <i class="bi bi-house-door-fill"></i>
-                    <span>Screen2.html</span>
-                </a>
-            </li>
-
-            
+            {% endfor %}
             
 
            
@@ -321,7 +312,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1 > <a href="#" id="RefreshBSTableId"></a>Screen2</h1>
+            <h1 > <a href="#" id="RefreshBSTableId"></a>Screen1</h1>
 
 
         </div>
