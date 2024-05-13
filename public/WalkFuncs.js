@@ -1,28 +1,24 @@
 import fs from "fs-extra";
-import path from "path";
 import nunjucks from "nunjucks";
 const results = [];
 var acutalResults = 0;
 
-var walk = function (tree, done) {
+var walk = function (tree, inAssetsPath) {
+    console.log("inAssetsPath : ", inAssetsPath);
     tree.forEach(element => {
-        console.log("element : ", element);
         if ("children" in element) {
-            fs.mkdirSync("bin/Jaya1/Jaya");
+            fs.mkdirSync(`bin/${element.path}`);
 
-            walk(element.children, done);
+            walk(element.children, `../${inAssetsPath}`);
         } else {
+            const html = fs.readFileSync(element.path, 'utf8');
 
-            let exists = fs.existsSync(fileName);
+            let data = nunjucks.renderString(html, {
+                dir: tree,
+                inName: element.name, inAssetsPath
+            });
 
-            if (exists === false) {
-                writeFile(++i);
-            } else {
-                const html = fs.readFileSync(element.path, 'utf8');
-
-                let data = nunjucks.renderString(html, { dir: tree, inName: element.name });
-                fs.writeFileSync(`bin/${element.path}`, data, 'utf8');
-            };
+            fs.writeFileSync(`bin/${element.path}`, data, 'utf8');
         };
     });
 };
