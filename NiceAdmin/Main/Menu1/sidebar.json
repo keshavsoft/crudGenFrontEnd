@@ -1,3 +1,12 @@
 [
-    
+    {
+        "name": "AboutUs",
+        "url": "AboutUs.html",
+        "icon": "grid-fill"
+      },
+      {
+        "name": "Items-ShowAll",
+        "url": "AboutUs.html",
+        "icon": "grid"
+      }
 ]
