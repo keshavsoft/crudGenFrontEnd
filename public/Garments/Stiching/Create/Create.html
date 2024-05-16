@@ -310,10 +310,22 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="../VoucherShow/ShowAll.html">
-                    <i class="bi bi-database-add"></i></i>
+                    <i class="bi bi-table"></i></i>
                     <span>Voucher-Show</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-journal-text"></i><span>Delivery</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="../DeliverMenu/DeliveredItems/ShowAll.html">
+                      <i class="bi bi-circle"></i><span>Delivered items</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
             <li class="nav-item ">
                 <a class="nav-link collapsed" href="../ShowAll/ShowAll.html">
                     <i class="bi bi-table"></i></i>
@@ -335,7 +347,6 @@
         <datalist id="AccountNamesDataListId">
             <option>Keshav</option>
         </datalist>
-        <datalist id="masteritems"></datalist>
 
         <div class="pagetitle">
             <h1>Create</h1>
@@ -363,8 +374,9 @@
 
                                             <div class="col-md-12">
                                                 <label class="col-md-2 col-form-label">ProductName</label>
+
                                                 <div class="col-md-8">
-                                                    <input list="masteritems" id="ProductNameId" name="ProductName"
+                                                    <input id="ProductNameId" name="ProductName"
                                                         data-dataattribute="Description" value="" required
                                                         class="form-control KeshavSoftHtmlAttributes" placeholder=""
                                                         autocomplete="off" autofocus>
