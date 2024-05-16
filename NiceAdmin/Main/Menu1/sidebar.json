@@ -1,12 +1,22 @@
 [
+  {
+      "name": "AboutUs",
+      "url": "AboutUs.html",
+      "icon": "grid-fill"
+    },
     {
-        "name": "AboutUs",
-        "url": "AboutUs.html",
-        "icon": "grid-fill"
-      },
-      {
-        "name": "Items-ShowAll",
-        "url": "AboutUs.html",
-        "icon": "grid"
-      }
+      "name": "Items-ShowAll",
+      "url": "AboutUs.html",
+      "icon": "grid",
+      "children":[
+        {
+          "name": "Items-ShowAll",
+          "icon":"circle"
+        },
+        {
+          "name": "Items-Show",
+          "icon":"square"
+        }
+      ]
+    }
 ]
