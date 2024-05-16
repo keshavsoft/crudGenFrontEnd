@@ -1,4 +1,3 @@
-import { StartFunc as StartFuncOnLoadSuccess } from "./OnLoadSuccess/EntryFile.js";
 import { StartFunc as StartFuncFetchFromEndPoint } from "./FetchFromEndPoint/EntryFile.js";
 import ConfigJson from '../../../Config.json' with {type: 'json'};
 
@@ -8,20 +7,11 @@ let StartFunc = async () => {
     jFLocalHideSpinner();
 
     let jVarLocalDataNeeded = localStorage.getItem(ConfigJson.tableName);
+    let jVarLocalParseData = JSON.parse(jVarLocalDataNeeded);
 
     var $table = $('#table');
 
-    $table.bootstrapTable('destroy');
-
-    $table.bootstrapTable({
-        data: JSON.parse(jVarLocalDataNeeded),
-        onPostBody: function () {
-            $("#TableFooterAccountNameId").focus();
-            StartFuncOnLoadSuccess();
-        }
-    });
-
-    // StartFuncOnLoadSuccess();
+    $table.bootstrapTable("load", jVarLocalParseData);
 };
 
 let jFLocalHideSpinner = () => {
