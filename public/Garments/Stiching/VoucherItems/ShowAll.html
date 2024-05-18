@@ -308,36 +308,56 @@
                 </a>
             </li>
             <ul class="sidebar-nav" id="sidebar-nav">
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                         <i class="bi bi-journal-text"></i><span>Voucher</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="forms-nav" class="nav-content  collapse" data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="../VoucherShow/ShowAll.html" class="">
-                                <i class="bi bi-circle"></i><span>Voucher All</span>
+                                <i class="bi bi-circle"></i><span>All</span>
                             </a>
                         </li>
                         <li>
                             <a href="../DeliverMenu/DeliveredItems/ShowAll.html">
-                                <i class="bi bi-circle"></i><span>Delivery</span>
+                                <i class="bi bi-circle"></i><span>Delivered</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../VoucherPending/ShowAll.html">
+                                <i class="bi bi-circle"></i><span>pending</span>
                             </a>
                         </li>
                     </ul>
                 </li>
 
             </ul>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#Items-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-pencil-square"></i><span>Items</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="Items-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="../Items/All/All.html">
+                      <i class="bi bi-circle"></i><span> All</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../Items/Delivered/Delivered.html">
+                      <i class="bi bi-circle"></i><span> Delivered</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../Items/Pending/Pending.html">
+                      <i class="bi bi-circle"></i><span> Pending</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
             <li class="nav-item ">
                 <a class="nav-link " href="#">
                     <i class="bi bi-table"></i></i>
                     <span>Create-Items</span>
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link collapsed" href="../ShowAll/ShowAll.html">
-                    <i class="bi bi-table"></i></i>
-                    <span>ShowAll</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -346,55 +366,6 @@
                     <span>LastItems-Create</span>
                 </a>
             </li>
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#delete-nav" data-bs-toggle="collapse" href="#">
-                  <i class="bi bi-trash"></i><span>Delete</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="delete-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                  <li>
-                    <a href="../Delete/Delete-simple/Delete.html">
-                      <i class="bi bi-circle"></i><span>Simple</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="../Delete/Delete-withAlert/Delete.html">
-                      <i class="bi bi-circle"></i><span>With Alert</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="../Delete/Delete-BSToast/Delete.html">
-                      <i class="bi bi-circle"></i><span>With BS-Toast</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="../Delete/Delete-SAToast/Delete.html">
-                      <i class="bi bi-circle"></i><span>With sweetAlert</span>
-                    </a>
-                  </li>
-                </ul>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#Alter-nav" data-bs-toggle="collapse" href="#">
-                  <i class="bi bi-pencil-square"></i><span>Alter</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="Alter-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                  <li>
-                    <a href="../Alter-ShowAll/Alter-ShowAll.html">
-                      <i class="bi bi-circle"></i><span>ShowAll</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="../Alter/Alter.html">
-                      <i class="bi bi-circle"></i><span>Alter</span>
-                    </a>
-                  </li>
-                </ul>
-            </li> -->
-
-
-            <!-- End Today Qrcodes Nav -->
         </ul>
     </aside>
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
@@ -476,13 +447,11 @@
                                             ProductName
                                         </th>
                                         <th>
-                                            GrossAmount
+                                            Amount
                                         </th>
+                                       
                                         <th>
-                                            DisPercent
-                                        </th>
-                                        <th>
-                                            ItemDescription
+                                            Description
                                         </th>
                                         <th>
                                             DateTime
@@ -501,9 +470,9 @@
                                         <th>
                                             <input type="text" class="form-control" id="GrossAmount" name="GrossAmount">
                                         </th>
-                                        <th>
+                                        <!-- <th>
                                             <input type="text" class="form-control" id="DisPercent" name="DisPercent">
-                                        </th>
+                                        </th> -->
                                         <th>
                                             <input type="text" class="form-control" id="ItemDescription"
                                                 name="ItemDescription">
@@ -519,10 +488,10 @@
                                         <th data-field="ProductName"></th>
                                         <th data-field="GrossAmount" data-footer-formatter="jFLocalColumnTotal">
                                         </th>
-                                        <th data-field="DisPercent"></th>
+                                        <!-- <th data-field="DisPercent"></th> -->
                                         <th data-field="ItemDescription"></th>
 
-                                        <th data-field="FK"></th>
+                                        <!-- <th data-field="FK"></th> -->
                                         <th data-field="DateTime"></th>
                                     </tr>
 

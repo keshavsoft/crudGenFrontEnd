@@ -6,7 +6,8 @@ let StartFunc = async () => {
     let jVarLocalDataNeeded = await StartFuncFetchFuncs();
 
     if (jVarLocalDataNeeded.status === 200) {
-        StartFuncAfterFetch();
+        let jVarLocalFetchData = await jVarLocalDataNeeded.json();
+        StartFuncAfterFetch({ InData: jVarLocalFetchData });
     } else {
         let jVarLocalReason = await jVarLocalDataNeeded.text();
         Swal.fire({
