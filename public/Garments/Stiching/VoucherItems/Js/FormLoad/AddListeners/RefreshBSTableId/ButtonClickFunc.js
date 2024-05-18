@@ -1,8 +1,10 @@
 import { StartFunc as StartFuncFetchFromEndPoint } from "./FetchFromEndPoint/EntryFile.js";
+import { StartFunc as StartFuncFetchGetFunc } from "./FetchGetFunc/EntryFile.js";
 import ConfigJson from '../../../Config.json' with {type: 'json'};
 
 let StartFunc = async () => {
     await StartFuncFetchFromEndPoint();
+    await StartFuncFetchGetFunc();
 
     jFLocalHideSpinner();
 
