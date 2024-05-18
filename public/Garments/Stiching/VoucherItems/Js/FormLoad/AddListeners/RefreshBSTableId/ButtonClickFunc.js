@@ -3,8 +3,8 @@ import { StartFunc as StartFuncFetchGetFunc } from "./FetchGetFunc/EntryFile.js"
 import ConfigJson from '../../../Config.json' with {type: 'json'};
 
 let StartFunc = async () => {
-    await StartFuncFetchFromEndPoint();
     await StartFuncFetchGetFunc();
+    await StartFuncFetchFromEndPoint();
 
     jFLocalHideSpinner();
 
@@ -12,7 +12,6 @@ let StartFunc = async () => {
     let jVarLocalParseData = JSON.parse(jVarLocalDataNeeded);
 
     var $table = $('#table');
-
     $table.bootstrapTable("load", jVarLocalParseData);
 };
 

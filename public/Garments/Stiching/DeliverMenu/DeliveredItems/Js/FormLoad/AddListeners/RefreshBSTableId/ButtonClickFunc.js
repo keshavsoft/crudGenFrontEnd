@@ -34,6 +34,8 @@ function jFLocalInsertItemCount(inData) {
             const filteredData1 = fetchData1.filter(fetchItem => fetchItem.FK === item.pk.toString());
             const filteredData2 = fetchData2.filter(fetchItem => fetchItem.FK === item.pk.toString());
             item.ItemCount = filteredData1.length - filteredData2.length;
+            item.DeleverCount = filteredData2.length;
+            item.PendingCount = (filteredData1.length - filteredData2.length) - filteredData2.length;
             return item;
         });
         return processedData;
