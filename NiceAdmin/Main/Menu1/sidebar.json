@@ -1,22 +1,29 @@
 [
   {
+    "name": "Dashboard",
+    "url": "Dashboard.html",
+    "icon": "grid"
+  },
+  {
+    "name": "ShowAll",
+    "icon": "calendar",
+    "children":[
+      {
+        "name": "Items-ShowAll",
+        "url": "Items-ShowAll.html",
+        "icon":"circle"
+      },
+      {
+        "name": "Items-Show",
+        "url":"Items-Show.html",
+        "icon":"square"
+      }
+    ]
+  },
+  {
       "name": "AboutUs",
       "url": "AboutUs.html",
       "icon": "grid-fill"
-    },
-    {
-      "name": "Items-ShowAll",
-      "url": "AboutUs.html",
-      "icon": "grid",
-      "children":[
-        {
-          "name": "Items-ShowAll",
-          "icon":"circle"
-        },
-        {
-          "name": "Items-Show",
-          "icon":"square"
-        }
-      ]
     }
+    
 ]
