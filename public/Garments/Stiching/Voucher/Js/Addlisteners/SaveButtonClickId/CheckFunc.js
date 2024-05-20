@@ -1,31 +1,49 @@
-let StartFunc = async () => {
-    return await jFSalesRefCheck();
-};
-const jFSalesRefCheck = () => {
-    let jVarLocalFactoryNumber = document.getElementById('CustomerNumber');
-    let jVarLocalFactoryName = document.getElementById('CustomerName');
-    if (jVarLocalFactoryNumber.value === "") {
-        jVarLocalFactoryNumber.classList.add("is-invalid");
-        jVarLocalFactoryNumber.focus();
+const StartFunc = () => { 
+    if ((jFCustomerNumber()) === false) {
         return false;
     };
-    
-    if (jVarLocalFactoryName.value === "") {
-        jVarLocalFactoryName.classList.add("is-invalid");
-        //jVarLocalFactoryName.focus();
+    if ((jFCustomerName()) === false) {
         return false;
     };
 
-    if ((jVarLocalFactoryNumber.value === "") === false) {
-        jVarLocalFactoryNumber.classList.remove("is-invalid");
-        return true;
-    };
+    return true;
+ };
+ const jFCustomerNumber = () => {
+    let jVarLocalCustomerNumber = document.getElementById('CustomerNumber');
 
-    if ((jVarLocalFactoryName.value === "") === false) {
-        jVarLocalFactoryName.classList.remove("is-invalid");
+    if (jVarLocalCustomerNumber.value === "") {
+        jVarLocalCustomerNumber.classList.add("is-invalid");
+        jVarLocalCustomerNumber.focus();
+        return false;
+    };
+    if ((jVarLocalCustomerNumber.value.length === 10) === false) {
+        document.getElementById("error-msg").innerHTML = "must be 10"
+        jVarLocalCustomerNumber.classList.add("is-invalid");
+        jVarLocalCustomerNumber.focus();
+        return false;
+    }
+    if ((jVarLocalCustomerNumber.value === "") === false && (jVarLocalCustomerNumber.value.length === 10) === false) {
+        jVarLocalCustomerNumber.classList.remove("is-invalid");
         return true;
     };
     return true;
 };
 
-export { StartFunc }
+const jFCustomerName = () => {
+    let jVarLocalCustomerName = document.getElementById('CustomerName');
+
+    if (jVarLocalCustomerName.value === "") {
+        jVarLocalCustomerName.classList.add("is-invalid");
+        jVarLocalCustomerName.focus();
+        return false;
+    };
+
+    if ((jVarLocalCustomerName.value === "") === false) {
+        jVarLocalCustomerName.classList.remove("is-invalid");
+        return true;
+    };
+    return true;
+};
+
+
+export {StartFunc};

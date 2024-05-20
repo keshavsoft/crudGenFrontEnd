@@ -384,7 +384,7 @@
                 </ol>
             </nav>
         </div>
-
+        <datalist id="suggesteditems"></datalist>
         <div class="modal fade" id="largeModal" tabindex="-1">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -462,7 +462,7 @@
                                         </th>
                                         <th>
                                             <div class="input-group">
-                                                <input type="text" class="form-control " id="ProductName"
+                                                <input list="suggesteditems" type="text" class="form-control " id="ProductName"
                                                     name="ProductName" autofocus>
 
                                             </div>
@@ -563,6 +563,7 @@
                 return sum + i
             }, 0)
         }
+        
     </script>
 
     <script>
