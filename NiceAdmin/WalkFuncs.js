@@ -10,7 +10,8 @@ var walk = function (HtmlFilesOnly, FolderPath) {
         var fileContent = fs.readFileSync(FolderPath + '/' + element, 'utf8');
         
         const renderedContent = nunjucks.renderString(fileContent, {
-            SideBarArray: obj
+            SideBarArray: obj,
+            filename:element
                     });
         var destinationPath = './bin/Main/Menu1/' + element;
         fs.writeFileSync(destinationPath, renderedContent);
