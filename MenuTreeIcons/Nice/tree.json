@@ -1,0 +1,133 @@
+{
+  "path": "Main/Menu1",
+  "name": "Menu1",
+  "icon": "bi bi-house-fill",
+  "children": [
+    {
+      "path": "Main\\Menu1\\Admin",
+      "name": "Admin",
+      "icon":"bi bi-person-circle",
+      "children": [
+        {
+          "path": "Main\\Menu1\\Admin\\Admin.html",
+          "icon":"fa fa-dashboard",
+          "name": "Admin.html"
+          
+        },
+        {
+          "path": "Main\\Menu1\\Admin\\Masters",
+          "name": "Masters",
+          "icon":"bi bi-menu-button-wide-fill",
+          "children": [
+            {
+              "path": "Main\\Menu1\\Admin\\Masters\\Addons",
+              "name": "Addons",
+              "icon":"fa fa-dashboard",
+              "children": [
+                {
+                  "path": "Main\\Menu1\\Admin\\Masters\\Addons\\Addons.html",
+                  "name": "Addons.html"
+                }
+              ]
+            },
+            {
+              "path": "Main\\Menu1\\Admin\\Masters\\Customers",
+              "name": "Customers",
+              "icon":"fa fa-dashboard",
+              "children": [
+                {
+                  "path": "Main\\Menu1\\Admin\\Masters\\Customers\\Create",
+                  "name": "Create",
+                  "icon":"fa fa-dashboard",
+                  "children": []
+                },
+                {
+                  "path": "Main\\Menu1\\Admin\\Masters\\Customers\\Customers.html",
+                  "icon":"fa fa-dashboard",
+                  "name": "Customers.html"
+                  
+                },
+                {
+                  "path": "Main\\Menu1\\Admin\\Masters\\Customers\\ShowAll",
+                  "icon":"fa fa-dashboard",
+                  "name": "ShowAll",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "path": "Main\\Menu1\\Admin\\Masters\\Items",
+              "icon":"fa fa-dashboard",
+              "name": "Items",
+              "children": [
+                {
+                  "path": "Main\\Menu1\\Admin\\Masters\\Items\\Items.html",
+                  "icon":"fa fa-dashboard",
+                  "name": "Items.html"
+                }
+              ]
+            },
+            {
+              "path": "Main\\Menu1\\Admin\\Masters\\Masters.html",
+              "icon":"fa fa-dashboard",
+              "name": "Masters.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Main\\Menu1\\Branch",
+      "icon":"bi bi-house-fill",
+      "name": "Branch",
+      "children": [
+        {
+          "path": "Main\\Menu1\\Branch\\Branch.html",
+          "icon":"fa fa-dashboard",
+          "name": "Branch.html"
+        },
+        {
+          "path": "Main\\Menu1\\Branch\\Masters",
+          "icon":"bi bi-menu-button-wide-fill",
+          "name": "Masters",
+          "children": [
+            {
+              "path": "Main\\Menu1\\Branch\\Masters\\Customers",
+              "icon":"fa fa-dashboard",
+              "name": "Customers",
+              "children": [
+                {
+                  "path": "Main\\Menu1\\Branch\\Masters\\Customers\\Create",
+                  "icon":"fa fa-dashboard",
+                  "name": "Create",
+                  "children": []
+                },
+                {
+                  "path": "Main\\Menu1\\Branch\\Masters\\Customers\\Customers.html",
+                  "icon":"fa fa-dashboard",
+                  "name": "Customers.html"
+                },
+                {
+                  "path": "Main\\Menu1\\Branch\\Masters\\Customers\\ShowAll",
+                  "icon":"fa fa-dashboard",
+                  "name": "ShowAll",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "path": "Main\\Menu1\\Branch\\Masters\\Masters.html",
+              "icon":"fa fa-dashboard",
+              "name": "Masters.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Main\\Menu1\\Menu.html",
+      "icon":"fa fa-dashboard",
+      "name": "Menu.html"
+    }
+  ]
+}

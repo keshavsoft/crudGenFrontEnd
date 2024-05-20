@@ -30,15 +30,22 @@ function jFLocalInsertItemCount(inData) {
             return response.json();
         })
     ]).then(([fetchData1, fetchData2]) => {
-        const processedData = inData.map(item => {
+        let LocalArray = []
+
+        inData.forEach(item => {
             const filteredData1 = fetchData1.filter(fetchItem => fetchItem.FK === item.pk.toString());
             const filteredData2 = fetchData2.filter(fetchItem => fetchItem.FK === item.pk.toString());
-            item.ItemCount = filteredData1.length - filteredData2.length;
-            item.DeleverCount = filteredData2.length;
-            item.PendingCount = (filteredData1.length - filteredData2.length) - filteredData2.length;
-            return item;
+
+            if ((filteredData1.length - filteredData2.length) - filteredData2.length > 0) {
+                item.ItemCount = filteredData1.length;
+                item.DeleverCount = filteredData2.length;
+                item.PendingCount = item.ItemCount - filteredData2.length;
+
+                LocalArray.push(item)
+            };
+
         });
-        return processedData;
+        return LocalArray;
     }).catch(error => {
         console.error('Error fetching data:', error);
     });
