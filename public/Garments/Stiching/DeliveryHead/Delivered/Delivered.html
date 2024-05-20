@@ -42,7 +42,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="../../../Dashboard/Dashboard.html" class="logo d-flex align-items-center">
+            <a href="../../Dashboard/Dashboard.html" class="logo d-flex align-items-center">
                 <img src="./assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block" id="BranchNameId">Maguva</span>
             </a>
@@ -286,14 +286,14 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-                <a class="nav-link collapsed" href="../../Dashboard/Dashboard.html">
+                <a class="nav-link collapsed" href="../../../Dashboard/Dashboard.html">
                     <i class="bi bi-house-door-fill"></i>
                     <span>Home</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="../../Dashboard/Dashboard.html">
+                <a class="nav-link collapsed" href="../../../Dashboard/Dashboard.html">
                     <i class="bi bi-arrow-90deg-left"></i>
                     <span>Parent</span>
                 </a>
@@ -313,39 +313,48 @@
                     <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                         <i class="bi bi-journal-text"></i><span>Voucher</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <ul id="forms-nav" class="nav-content  collapse" data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="../../VoucherShow/ShowAll.html" class="">
                                 <i class="bi bi-circle"></i><span>All</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../DeliveredItems/ShowAll.html">
+                            <a href="../../DeliverMenu/DeliveredItems/ShowAll.html">
                                 <i class="bi bi-circle"></i><span>Delivered</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../../VoucherPending/ShowAll.html">
-                                <i class="bi bi-circle"></i><span>pending</span>
+                            <a href="../../VoucherPending/ShowAll.html" class="">
+                                <i class="bi bi-circle"></i><span>Pending</span>
                             </a>
                         </li>
                     </ul>
                 </li>
 
             </ul>
-            <li class="nav-item ">
-                <a  class="nav-link collapsed" href="#" >
-                    <i class="bi bi-table"></i></i>
-                    <span>Delevered-Items</span>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#Items-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-pencil-square"></i><span>Items</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-            </li>
-           
-            <li class="nav-item collapsed">
-                <a  class="nav-link collapsed" href="../../ShowAll/ShowAll.html">
-                    <i class="bi bi-table"></i></i>
-                    <span>ShowAll</span>
-                </a>
-            </li>
+                <ul id="Items-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="../../Items/All/All.html" class="">
+                      <i class="bi bi-circle"></i><span> All</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../Items/Delivered/Delivered.html" class="">
+                      <i class="bi bi-circle"></i><span> Delivered</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../Items/Pending/Pending.html">
+                      <i class="bi bi-circle"></i><span> Pending</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="../../Create/Create.html">
                     <i class="bi bi-database"></i></i>
@@ -353,9 +362,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link collapsed" href="../DeliveryHeadDescription/ShowAll.html">
                     <i class="bi bi-database"></i></i>
                     <span>Description-Delivery</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#">
+                    <i class="bi bi-database"></i></i>
+                    <span>Description-Items</span>
                 </a>
             </li>
             <!-- <li class="nav-item">
@@ -437,13 +452,15 @@
                             <table id="table" data-toolbar="#toolbar" data-search="true" data-searchable="true"
                                 data-show-footer="true" data-show-columns="true" data-show-columns-toggle-all="true"
                                 data-click-to-select="true" data-filter-control="true" data-show-export="true"
-                                data-detail-formatter="detailFormatter" data-id-field="pk" data-show-toggle="true">
+                                data-detail-formatter="detailFormatter" data-id-field="pk" data-show-toggle="true"
+                                >
                                 <thead>
                                     <tr id="tableHeadRow">
                                         <th data-field="id" data-formatter="jFGlobalSerialColumn">#</th>
                                         
+                                        <th data-field="ProductName">ProductName</th>
+                                        <th data-field="GrossAmount">GrossAmount</th>
                                         <th data-field="FK">StichRef</th>
-                                        <th data-field="deliveryItemDescription">Description</th>
                                         <th data-field="DateTime">DateTime</th>
                                     </tr>
                                 </thead>
