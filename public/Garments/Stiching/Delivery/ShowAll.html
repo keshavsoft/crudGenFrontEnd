@@ -402,7 +402,7 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- Top Label input -->
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <label class="col-md-4 col-form-label">Discount Amount</label>
                                 <div class="col-md-8">
                                     <input kvs1="" id="Discount" name="Discount" min="1" step="1" max="1000000"
@@ -413,7 +413,7 @@
                                         Should not be Empty!!
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- Top Label input -->
                             <div class="col-md-12">
                                 <label class="col-md-4 col-form-label">Description</label>
@@ -451,6 +451,7 @@
                                         <th data-field="ProductName">ProductName</th>
                                         <th data-field="GrossAmount">GrossAmount</th>
                                         <th data-field="DateTime">DateTime</th>
+                                        <th data-field="Discount" data-formatter="inputFormatter">Discount</th>
                                         <th data-formatter="jFLocalDeleteColumn"></th>
 
                                     </tr>
@@ -526,6 +527,9 @@
             ].join('')
 
         };
+        function inputFormatter(value, row, index) {
+        return '<input type="number" id="dicount-id'+row.pk+'" class="form-control" name="input-' + row.pk + '" />';
+    }
     </script>
 
 
