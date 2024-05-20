@@ -1,0 +1,23 @@
+[
+        {
+            "name": "MenuTree",
+            "isTitle": true
+        },
+        {   
+            "name": "Menu",
+            "icon": "fa fa-dashboard",
+            "submenu":[
+                {
+                    "name": "Dashboard",
+                    "template":"Normal.html",
+                    "url": "Dashboard.html"
+                },
+                {
+                    "name": "Admin",
+                    "template":"Normal.html",
+                    "url": "Admin.html"
+                } 
+            ]
+
+        }
+]
