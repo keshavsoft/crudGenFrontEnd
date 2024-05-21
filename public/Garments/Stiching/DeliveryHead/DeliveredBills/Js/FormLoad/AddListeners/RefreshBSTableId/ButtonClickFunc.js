@@ -31,12 +31,16 @@ function jFLocalInsertItemCount(inData) {
         })
     ]).then(([fetchData1, fetchData2]) => {
         const processedData = inData.map(item => {
-            console.log("item: ", item);
             const filteredData1 = fetchData1.filter(fetchItem => fetchItem.FK === item.pk.toString());
             const filteredData2 = fetchData2.filter(fetchItem => fetchItem.FK === item.pk.toString());
+
+            // let jVarLocalDeliveredDate = JLocalDateFunc({ inDate: item.DateTime });
+            // let jVarLocalDate = JLocalDateFunc({ inDate: filteredData2.DateTime });
             item.ItemCount = filteredData1.length;
             item.DeleverCount = filteredData2.length;
             item.PendingCount = item.ItemCount - filteredData2.length;
+            item.DateTime = JLocalDateFunc({ inDate: item.DateTime });
+
             return item;
         });
         return processedData;
@@ -49,6 +53,10 @@ function jFLocalInsertItemCount(inData) {
 let jFLocalHideSpinner = () => {
     let jVarLocalSpinnerId = document.getElementById("SpinnerId");
     jVarLocalSpinnerId.style.display = "none";
+};
+
+const JLocalDateFunc = ({ inDate }) => {
+    return new Date(inDate).toLocaleString("en-GB", { timeZone: "UTC", }).replace(",", "");
 };
 
 export { StartFunc };
