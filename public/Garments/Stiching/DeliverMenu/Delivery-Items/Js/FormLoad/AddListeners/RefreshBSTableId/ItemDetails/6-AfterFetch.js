@@ -1,7 +1,11 @@
+import { StartFunc as StartFuncShowOnDom } from './ShowOnDom.js';
+
+
 let StartFunc = async (response) => {
 
     if (response.status === 200) {
         let Localdata = await response.json();
+        StartFuncShowOnDom({ inData: Localdata })
         jFLocalHideSpinner();
         var $table = $('#table');
         $table.bootstrapTable({
