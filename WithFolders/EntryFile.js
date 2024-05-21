@@ -1,6 +1,8 @@
 import sidebar from './sidebar.json' assert { type: "json"};
 import nunjucks from "nunjucks";
 import fs from "fs-extra";
+import path from "path";
+
 var env = nunjucks.configure();
 
 let startsWith = (str, targetStr) => {
@@ -22,7 +24,8 @@ sidebar.forEach(sidebarItem => {
             let data = nunjucks.renderString(html,
                 { sidebar, sidebarItem: child }
             );
-            let folder = child.url.slice(0, -5);
+            // let folder = child.url.slice(0, -5);
+            let folder = path.parse(child.url).name;
 
             if (!fs.existsSync(`bin/${folder}`)) fs.mkdirSync(`bin/${folder}`);
             fs.writeFileSync(`bin/${folder}/${child.url}`, data);
