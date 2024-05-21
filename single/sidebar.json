@@ -1,0 +1,12 @@
+[
+        {
+            "name": "Dashboard",
+            "icon": "bi bi-archive",
+            "url" : "Dashboard.html"
+        },
+        {   
+            "name": "Masters",
+            "icon": "bi bi-person-circle",
+            "url" : "Masters.html"
+        }
+]

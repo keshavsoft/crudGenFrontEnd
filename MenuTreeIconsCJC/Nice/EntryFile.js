@@ -1,6 +1,6 @@
 // import nunjucks from "nunjucks";
-import sidebar from './sidebar.json' with { type: 'json' };
-import fs from "fs-extra";
+import sidebar from './sidebar.json' with { type : "json"};
+//import fs from "fs-extra";
 
 import { walk } from "./WalkFuncs.js";
 
