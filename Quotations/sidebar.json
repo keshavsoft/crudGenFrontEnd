@@ -1,0 +1,40 @@
+[
+        {
+            "name" : "UserInfo",
+            "icon" : "bi bi-person",
+            "url" : "UserInfo.html"
+        }, 
+        {
+            "name": "Items",
+            "icon": "bi bi-archive",
+            "children" : [
+                {
+                    "name" : "Create",
+                    "url" : "Items-Create.html"
+                },
+                {
+                    "name" : "ShowAll",
+                    "url" : "Items-ShowAll.html"
+                }
+            ]
+        },
+        {
+            "name": "Customers",
+            "icon": "bi bi-archive",
+            "children" : [
+                {
+                    "name" : "Create",
+                    "url" : "Customers-Create.html"
+                },
+                {
+                    "name" : "ShowAll",
+                    "url" : "Customers-ShowAll.html"
+                }
+            ]
+        },
+        {
+            "name" : "LoginInfo",
+            "icon" : "bi bi-person",
+            "url" : "LoginInfo.html"
+        }
+]
