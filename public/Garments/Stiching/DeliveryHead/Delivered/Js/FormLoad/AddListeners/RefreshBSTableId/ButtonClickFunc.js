@@ -1,9 +1,14 @@
+import { StartFunc as StartFuncGetFetch } from "./GetFetch.js";
+import { StartFunc as StartFuncAfterFetch } from "./AfterFetch.js";
+
 let StartFunc = async () => {
+  let jVarLocalFromFetch = await StartFuncGetFetch();
+  await StartFuncAfterFetch({ inFetchData: jVarLocalFromFetch });
   jFLocalHideSpinner();
   var $table = $("#table");
-  let LocalData=await jFLocalDataSameDate();
+  let LocalData = await jFLocalDataSameDate();
   $table.bootstrapTable({
-    data: LocalData
+    data: LocalData,
   });
 };
 
@@ -15,54 +20,46 @@ let jFLocalHideSpinner = () => {
 const jFLocalDataSameDate = async () => {
   let LocalData = await LocalFetchFunc();
   let jVarLocalDateTime = getUrlQueryParams({
-    inGetKey: "DateTime"
+    inGetKey: "DateTime",
   });
   let LocalDataWithDateTime = LocalData.filter((element) => {
     let LocalFromDateTime = JLocalDateFunc({
-      inDate: element.DateTime
+      inDate: element.DateTime,
     });
     let LocalToDateTime = JLocalDateFunc({
-      inDate: jVarLocalDateTime
+      inDate: jVarLocalDateTime,
     });
-    console.log("LocalFromDateTime", LocalFromDateTime);
-    console.log("LocalToDateTime", LocalToDateTime);
     if (LocalFromDateTime == LocalToDateTime) {
       return element;
     }
   });
   return LocalDataWithDateTime;
-}
+};
 
-const JLocalDateFunc = ({
-  inDate
-}) => {
-  return new Date(inDate).toLocaleString('en-GB', {
-    timeZone: 'UTC'
-  }).replace(',', '');
-}
-
+const JLocalDateFunc = ({ inDate }) => {
+  return new Date(inDate)
+    .toLocaleString("en-GB", {
+      timeZone: "UTC",
+    })
+    .replace(",", "");
+};
 
 const LocalFetchFunc = async () => {
   let jVarLocalStichRef = getUrlQueryParams({
-    inGetKey: "StichRef"
+    inGetKey: "StichRef",
   });
-  console.log("jVarLocalStichRef", jVarLocalStichRef);
   let LocalURL = `/bin/DeliveryStiching/FilterData/FK/${jVarLocalStichRef}`;
   let Response = await fetch(LocalURL);
   let Data = await Response.json();
-  console.log("Data", Data);
+  console.log("data: ", Data);
   return Data;
 };
 
-let getUrlQueryParams = ({
-  inGetKey
-}) => {
+let getUrlQueryParams = ({ inGetKey }) => {
   const queryString = window.location.search;
   const parameters = new URLSearchParams(queryString);
   const value = parameters.get(inGetKey);
   return value;
 };
 
-export {
-  StartFunc
-};
+export { StartFunc };

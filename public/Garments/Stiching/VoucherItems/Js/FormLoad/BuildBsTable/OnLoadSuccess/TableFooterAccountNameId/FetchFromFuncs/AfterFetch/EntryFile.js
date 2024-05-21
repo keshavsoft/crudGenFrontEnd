@@ -16,5 +16,6 @@ const localFunc = () => {
     productNameInput.value = '';
     grossAmountInput.value = '';
     itemDescriptionInput.value = '';
+    productNameInput.focus();
  }
 export { StartFunc }
