@@ -367,9 +367,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="../DeliveryHead/DeliveryHeadDescription/ShowAll.html">
+                <a class="nav-link collapsed" href="../DeliveryHead/DeliveredBills/ShowAll.html">
                     <i class="bi bi-database"></i></i>
-                    <span>Description-Delivery</span>
+                    <span>Delivery Bills</span>
                 </a>
             </li>
         </ul>
@@ -484,7 +484,7 @@
                                             </div>
                                         </th>
                                         <th>
-                                            <input type="text" class="form-control" id="GrossAmount" name="GrossAmount">
+                                            <input type="number" class="form-control" id="GrossAmount" name="GrossAmount">
                                         </th>
                                         <!-- <th>
                                             <input type="text" class="form-control" id="DisPercent" name="DisPercent">
@@ -501,7 +501,7 @@
                                     <tr id="tableHeadRow">
                                         <th data-field="id" data-formatter="jFGlobalSerialColumn"></th>
 
-                                        <th data-field="ProductName"></th>
+                                        <th data-field="ProductName" data-footer-formatter="jFLocalItemCount"></th>
                                         <th data-field="GrossAmount" data-footer-formatter="jFLocalColumnTotal">
                                         </th>
                                         <!-- <th data-field="DisPercent"></th> -->
@@ -560,18 +560,12 @@
             return html.join('')
         };
 
-        // function jfFooter(data, row, index) {
-        //     console.log("data--:", data);
-        //     console.log("row--:", row);
-        //     console.log("index--:", index);
-        //     var field = this.field
-        //     return row + 'kkkk'
-        // }
+        function jFLocalItemCount(data, row, index) {
+            return data.length;
+        }
+
         function jFLocalColumnTotal(data, i1, i2) {
-            let k1 = $(i1).parent()
-            console.log("KKK", i1, k1);
-
-
+            let k1 = $(i1).parent();
             var field = this.field
             return '₹' + data.map(function (row) {
                 return +row[field]
