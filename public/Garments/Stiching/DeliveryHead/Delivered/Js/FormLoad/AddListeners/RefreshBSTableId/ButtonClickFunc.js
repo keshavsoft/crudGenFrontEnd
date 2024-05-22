@@ -26,10 +26,10 @@ const jFLocalDataSameDate = async () => {
     let LocalFromDateTime = JLocalDateFunc({
       inDate: element.DateTime,
     });
-    let LocalToDateTime = JLocalDateFunc({
-      inDate: jVarLocalDateTime,
-    });
-    if (LocalFromDateTime == LocalToDateTime) {
+    // let LocalToDateTime = JLocalDateFunc({
+    //   inDate: jVarLocalDateTime,
+    // });
+    if (LocalFromDateTime == jVarLocalDateTime) {
       return element;
     }
   });
