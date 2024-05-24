@@ -15,13 +15,13 @@ const StartFunc = ({ InData }) => {
     k1.innerHTML += `        <span class="inner-pre" style="font-size: 16px;">GURUDWARA,VISHAKAPATNAM,</span>\n`
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px;">GSTIN:37ACJPL9300K2ZB,Ph:08912796666,</span>\n`
     k1.innerHTML += `                <span class="inner-pre" style="font-size: 16px;">State Code:37</span>\n`
-    k1.innerHTML += `---------------------------------------------\n`
+    k1.innerHTML += `---------------------------------------------------\n`
     k1.innerHTML += `               <span class="inner-pre" style="font-size: 16px; font-weight: bold;">STICHING ESTIMATION</span> \n`
-    k1.innerHTML += `---------------------------------------------\n`
+    k1.innerHTML += `---------------------------------------------------\n`
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Customer    :  ${LocalInData.CustomerName}</span>\n`;
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Mobile      :  ${LocalInData.CustomerNumber}</span>\n`;
     // k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Des         :  ${LocalSalesDes}</span>\n`;
-    k1.innerHTML += `----------------------------------------------\n`
+    k1.innerHTML += `---------------------------------------------------\n`
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px;">Booking Date: ${dateOnly}</span>\n`;
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px;">Estimated Delivery Date: ${LocalDeliveryDate}</span>\n`;
 

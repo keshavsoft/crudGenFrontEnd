@@ -15,7 +15,7 @@ let jFLocalPrepareBody = () => {
         "DisPercent" : jVarLocalTableFooterDisPercent,
         "ItemDescription":LocalFuncForjVarLocalTableFooterItemDescription(),
         "AddOnAmount":LocalFuncForjVarLocalTableFooterAddOnAmount(),
-
+        "GAmount":LocalFuncForjVarLocalTableFooterGAmount(),
         "FK": getUrlQueryParams({ inGetKey: "StichRef" })
     }
 };
@@ -59,12 +59,33 @@ let LocalFuncForjVarLocalTableFooterItemDescription = () => {
 
 let LocalFuncForjVarLocalTableFooterAddOnAmount = () => {
     let jVarLocalTableFooterAddOnAmount = 'AddOnAmount'
+
     let jVarLocalHtmlId = document.getElementById(jVarLocalTableFooterAddOnAmount);
 
     if (jVarLocalHtmlId === null === false) {
     return jVarLocalHtmlId.value.trim();
     };
 };
+
+let LocalFuncForjVarLocalTableFooterGAmount = () => {
+    let jVarLocalTableFooterBSGroupId = 'GrossAmount'
+    let jVarLocalHtmlId1 = document.getElementById(jVarLocalTableFooterBSGroupId);
+
+    let jVarLocalTableFooterAddOnAmount = 'AddOnAmount'
+    let jVarLocalHtmlId2 = document.getElementById(jVarLocalTableFooterAddOnAmount);
+
+    if (jVarLocalHtmlId1 === null === false || jVarLocalHtmlId2 === null === false) {
+        let jVarGrossAmount = jVarLocalHtmlId1.value.trim();
+        let jVarAddOnAmount = jVarLocalHtmlId2.value.trim();
+        if(!jVarAddOnAmount) {
+            jVarAddOnAmount=0;
+        }
+        
+        return parseInt(jVarGrossAmount) + parseInt(jVarAddOnAmount);
+    };
+     
+};
+
 let getUrlQueryParams = ({ inGetKey }) => {
     const queryString = window.location.search;
     const parameters = new URLSearchParams(queryString);

@@ -467,10 +467,13 @@
                                         </th>
                                        
                                         <th>
-                                            Add-On Services
+                                            Description
                                         </th>
                                         <th>
-                                            Add-On Amount
+                                            Add-On
+                                        </th>
+                                        <th>
+                                            GAmount
                                         </th>
                                         <th>
                                             DateTime
@@ -500,6 +503,7 @@
                                             <input type="number" class="form-control" id="AddOnAmount" name="AddOnAmount">
                                         </th>
                                         <th></th>
+                                        <th></th>
                                         <th> <button class="btn btn-outline-success" type="button"
                                                 id="TableFooterSaveButtonId">Save</button></th>
                                     </tr>
@@ -513,6 +517,7 @@
                                         <th data-field="ItemDescription"></th>
                                         <th data-field="AddOnAmount" data-footer-formatter="jFLocalAddonAmountTotal">
                                         </th>
+                                        <th data-field="GAmount" data-footer-formatter="jFLocalGAmountTotal"></th>
                                         <!-- <th data-field="FK"></th> -->
                                         <th data-field="DateTime"></th>
                                     </tr>
@@ -569,6 +574,19 @@
         function jFLocalItemCount(data, row, index) {
             return data.length;
         }
+        function jFLocalGAmountTotal(data, i1, i2) {
+            let k1 = $(i1).parent();
+            var field = this.field
+            if (!field) {
+                field = 0;
+            }
+            return '₹' + data.map(function (row) {
+                return +row[field]
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0)
+        }
+
         function jFLocalAddonAmountTotal(data, i1, i2) {
             let k1 = $(i1).parent();
             var field = this.field

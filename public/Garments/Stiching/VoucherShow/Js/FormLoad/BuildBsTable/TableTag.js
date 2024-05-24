@@ -4,6 +4,7 @@ const StartFunc = () => {
     
     $table.attr("data-search", "true");
     $table.attr("data-searchable", "true");
+    $table.attr("data-filter-control", "true");
     $table.attr("data-show-footer", "true");
     $table.attr("data-show-columns", "true");
     $table.attr("data-show-columns-toggle-all", "true");
@@ -14,6 +15,7 @@ const StartFunc = () => {
     $table.attr("data-id-field", "pk");
     $table.attr("data-show-toggle", "true");
     //$table.attr("data-url", "/bin/StichingPOS/DataOnly");
+    
 
 };
 
