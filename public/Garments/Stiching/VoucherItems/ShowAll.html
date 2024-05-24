@@ -424,7 +424,7 @@
         <section class="section">
             <div class="row">
                 <div class="col">
-                    <label for=""><h3>Bill Number: </h3></label>
+                    <label for=""><h3>Estimation : </h3></label>
                     <label><h2 id="OrderId" style="font-weight: bold;"></h2></label>
                 </div>
             </div>
@@ -467,7 +467,10 @@
                                         </th>
                                        
                                         <th>
-                                            Description
+                                            Add-On Services
+                                        </th>
+                                        <th>
+                                            Add-On Amount
                                         </th>
                                         <th>
                                             DateTime
@@ -493,7 +496,9 @@
                                             <input type="text" class="form-control" id="ItemDescription"
                                                 name="ItemDescription">
                                         </th>
-
+                                        <th>
+                                            <input type="number" class="form-control" id="AddOnAmount" name="AddOnAmount">
+                                        </th>
                                         <th></th>
                                         <th> <button class="btn btn-outline-success" type="button"
                                                 id="TableFooterSaveButtonId">Save</button></th>
@@ -506,7 +511,8 @@
                                         </th>
                                         <!-- <th data-field="DisPercent"></th> -->
                                         <th data-field="ItemDescription"></th>
-
+                                        <th data-field="AddOnAmount" data-footer-formatter="jFLocalAddonAmountTotal">
+                                        </th>
                                         <!-- <th data-field="FK"></th> -->
                                         <th data-field="DateTime"></th>
                                     </tr>
@@ -563,7 +569,18 @@
         function jFLocalItemCount(data, row, index) {
             return data.length;
         }
-
+        function jFLocalAddonAmountTotal(data, i1, i2) {
+            let k1 = $(i1).parent();
+            var field = this.field
+            if (!field) {
+                field = 0;
+            }
+            return '₹' + data.map(function (row) {
+                return +row[field]
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0)
+        }
         function jFLocalColumnTotal(data, i1, i2) {
             let k1 = $(i1).parent();
             var field = this.field

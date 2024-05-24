@@ -1,11 +1,11 @@
 const StartFunc = ({ InData }) => {
     let LocalInData = InData;
-
-    let LocalTmeStamp =  new Date(LocalInData.DateTime)
-    .toLocaleString("en-GB", {
-      timeZone: "UTC",
-    })
-    .replace(",", "");
+    console.log("in data: ", LocalInData);
+    let LocalDeliveryDate = LocalInData.Date
+    
+    let LocalTmeStamp = LocalInData.DateTime;
+    let [datePart, timePart] = LocalTmeStamp.split(' ');
+    
     let LocalSalesDes = ("SalereturnDescription" in LocalInData) ? LocalInData.SalereturnDescription : "";
 
     let k1 = document.getElementById("PrintDiv");
@@ -23,7 +23,9 @@ const StartFunc = ({ InData }) => {
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Mobile      :  ${LocalInData.CustomerNumber}</span>\n`;
     // k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Des         :  ${LocalSalesDes}</span>\n`;
     k1.innerHTML += `----------------------------------------------\n`
-    k1.innerHTML += `<span class="inner-pre" style="font-size: 16px;">TimeStamp   : ${LocalTmeStamp}</span>\n`;
+    k1.innerHTML += `<span class="inner-pre" style="font-size: 16px;">Booking Date   : ${datePart}</span>\n`;
+    k1.innerHTML += `<span class="inner-pre" style="font-size: 16px;">Delivery Date   : ${LocalDeliveryDate}</span>\n`;
+
 
 };
 

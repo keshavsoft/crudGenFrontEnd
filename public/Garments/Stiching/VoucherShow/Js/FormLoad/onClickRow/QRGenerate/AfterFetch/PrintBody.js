@@ -1,5 +1,6 @@
 const StartFunc = ({ InData }) => {
     let LocalInData = InData;
+    console.log("data: ", LocalInData);
     let k1 = document.getElementById("PrintDiv");
 
     k1.innerHTML += `---------------------------------------------\n`
