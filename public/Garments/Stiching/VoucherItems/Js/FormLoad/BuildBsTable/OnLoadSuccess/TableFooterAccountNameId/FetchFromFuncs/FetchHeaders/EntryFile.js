@@ -14,6 +14,8 @@ let jFLocalPrepareBody = () => {
         "GrossAmount": LocalFuncForjVarLocalTableFooterGrossAmount(),
         "DisPercent" : jVarLocalTableFooterDisPercent,
         "ItemDescription":LocalFuncForjVarLocalTableFooterItemDescription(),
+        "AddOnAmount":LocalFuncForjVarLocalTableFooterAddOnAmount(),
+
         "FK": getUrlQueryParams({ inGetKey: "StichRef" })
     }
 };
@@ -49,6 +51,15 @@ let jFLocalTableFooterDisPercent = () => {
 let LocalFuncForjVarLocalTableFooterItemDescription = () => {
     let jVarLocalTableFooterItemDescription = 'ItemDescription'
     let jVarLocalHtmlId = document.getElementById(jVarLocalTableFooterItemDescription);
+
+    if (jVarLocalHtmlId === null === false) {
+    return jVarLocalHtmlId.value.trim();
+    };
+};
+
+let LocalFuncForjVarLocalTableFooterAddOnAmount = () => {
+    let jVarLocalTableFooterAddOnAmount = 'AddOnAmount'
+    let jVarLocalHtmlId = document.getElementById(jVarLocalTableFooterAddOnAmount);
 
     if (jVarLocalHtmlId === null === false) {
     return jVarLocalHtmlId.value.trim();

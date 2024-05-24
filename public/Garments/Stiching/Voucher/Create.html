@@ -377,7 +377,8 @@
         <datalist id="AccountNamesDataListId">
             <option>Keshav</option>
         </datalist>
-
+        <datalist id="SuggestCustomerNumbers"></datalist>
+        <datalist id="SuggestCustomerNames"></datalist>
         <div class="pagetitle">
             <h1>Create</h1>
 
@@ -404,7 +405,7 @@
                                                 <label class="col-md-4 col-form-label">Customer Number</label>
 
                                                 <div class="col-md-8">
-                                                    <input name="CustomerNumber" id="CustomerNumber" type="number" class="form-control"
+                                                    <input list="SuggestCustomerNumbers" name="CustomerNumber" id="CustomerNumber" type="number" class="form-control"
                                                          autocomplete="off" autofocus>
                                                     <div class="invalid-feedback" id="error-msg">
                                                         Should not be Empty!!
@@ -415,7 +416,7 @@
                                                 <label class="col-md-2 col-form-label">Customer Name</label>
 
                                                 <div class="col-md-8">
-                                                    <input id="CustomerName" name="CustomerName"
+                                                    <input list="SuggestCustomerNames" id="CustomerName" name="CustomerName"
                                                         data-attribute="Description" value=""
                                                         class="form-control " placeholder="" 
                                                         autocomplete="off">
