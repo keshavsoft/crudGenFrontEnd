@@ -6,10 +6,6 @@ let StartFunc = () => {
 };
 
 let StartFuncButtonClickFunc2 = async () => {
-    //let jVarLocalFetchUrl = "/bin/Accounts/DataOnly";
-    //let Account=document.getElementById("AccountId").value;
-    //console.log("date:",date);
-
     let jVarLocalFetchUrl = `/bin/Openings/Unique/headnam`;
     const response = await fetch(jVarLocalFetchUrl);
     //console.log(jVarLocalFetchUrl);
