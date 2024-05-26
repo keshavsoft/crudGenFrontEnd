@@ -1,4 +1,6 @@
 import sidebar from './sidebar.json' assert { type: "json"};
+import header from './header.json' assert { type: "json"};
+
 import nunjucks from "nunjucks";
 import fs from "fs-extra";
 import path from "path";
@@ -6,7 +8,6 @@ import path from "path";
 var env = nunjucks.configure();
 
 let startsWith = (str, targetStr) => {
-    // console.log("str, targetStr : ", str, targetStr);
     if (!str.length) return false
     return str.startsWith(targetStr)
 };
@@ -22,7 +23,7 @@ sidebar.forEach(sidebarItem => {
             let html = fs.readFileSync(`Template/${LocalFileName}`, 'utf8');
 
             let data = nunjucks.renderString(html,
-                { sidebar, sidebarItem: child }
+                { sidebar, sidebarItem: child, header }
             );
             // let folder = child.url.slice(0, -5);
             let folder = path.parse(child.url).name;
