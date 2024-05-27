@@ -18,6 +18,7 @@ const StartFunc = ({ InData }) => {
     k1.innerHTML += `---------------------------------------------------\n`
     k1.innerHTML += `               <span class="inner-pre" style="font-size: 16px; font-weight: bold;">STICHING ESTIMATION</span> \n`
     k1.innerHTML += `---------------------------------------------------\n`
+    k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Bill No     :  ${LocalInData.pk}</span>\n`;
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Customer    :  ${LocalInData.CustomerName}</span>\n`;
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Mobile      :  ${LocalInData.CustomerNumber}</span>\n`;
     // k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Des         :  ${LocalSalesDes}</span>\n`;
