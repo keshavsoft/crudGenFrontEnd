@@ -28,21 +28,22 @@
                 "name": "Create",
                 "url": "Customers-Create.html",
                 "template": "Customers-Create.html",
-                "headerControls":{
-                    "hideNotification": true,
-                    "hideSearchBar": true,
-                    "hideMessage": true,
-                    "hideProfile": true,
-                    "profileImage": "bhaskarprofile.webp"
+                "controls": {
+                    "headerControls": {
+                        "hideNotification": true,
+                        "hideSearchBar": true,
+                        "hideMessage": true,
+                        "hideProfile": true,
+                        "profileImage": "bhaskarprofile.webp",
+                        "profileName": "Bhaskar"
+                    },
+                    "sidebarControls": {
+                        "hideSidebar": true
+                    },
+                    "footerControls": {
+                    }
+                }
             },
-            "sidebarControls":{
-                "hideSidebar": true
-            },
-            "footerControls":{
-                "footer":"right",
-                "footerData":"Bhaskar@2024"
-            }
-    },
             {
                 "name": "ShowAll",
                 "url": "Customers-ShowAll.html",
