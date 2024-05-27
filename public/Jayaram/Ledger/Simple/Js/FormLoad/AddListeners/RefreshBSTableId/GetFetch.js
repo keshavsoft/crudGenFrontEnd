@@ -22,12 +22,12 @@ let LocalFetchAll = async () => {
     let ClubbedArray = [];
 
     console.log("results : ", results);
-    if (results[0].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[0].value];
-    if (results[1].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...jFLocalHeadRows({inData : results[1].value})];
-    if (results[2].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[2].value];
-    if (results[3].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...jFLocalHeadRows({inData : results[3].value})];
-    // if (results[3].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[3].value];
 
+    jFLocalReverseAccount({ i: 0, jVLocalResult: results, ClubbedArray });
+    JFLocalAsIsAccount({ i: 1, jVLocalResult: results, ClubbedArray });
+    jFLocalReverseAccount({ i: 2, jVLocalResult: results, ClubbedArray });
+    JFLocalAsIsAccount({ i: 3, jVLocalResult: results, ClubbedArray });
+    
     return Array.from(new Set(ClubbedArray));
 };
 
@@ -43,4 +43,15 @@ let jFLocalHeadRows = ({inData}) => {
     return jVarLocalReturnArray;
 }
 
+let jFLocalReverseAccount = ({ i, jVLocalResult, ClubbedArray }) => {
+    if (jVLocalResult[i].status === "fulfilled") {
+        ClubbedArray.push(...jFLocalHeadRows({ inData: jVLocalResult[i].value }));
+    }
+};
+
+let JFLocalAsIsAccount = ({ i, jVLocalResult, ClubbedArray }) => {
+    if (jVLocalResult[i].status === "fulfilled") {
+        ClubbedArray.push(...jVLocalResult[i].value);
+    }
+};
 export { StartFunc };
