@@ -21,12 +21,13 @@ let LocalFetchAll = async () => {
     const results = await Promise.allSettled(promises);
     let ClubbedArray = [];
 
-    // console.log("results : ", results);
-    if (results[0].status === "fulfilled") {
-        ClubbedArray = [...ClubbedArray, ...results[0]];
-    };
+    //console.log("results : ", results);
+    if (results[0].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[0].value];
+    if (results[1].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[1].value];
+    if (results[2].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[2].value];
+    if (results[3].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[3].value];
 
-    ClubbedArray = [...ClubbedArray, ...results[1].value, ...results[2].value, ...results[3].value];
+    // ClubbedArray = [...ClubbedArray, ...results[1].value, ...results[2].value, ...results[3].value];
 
     // const ClubbedArray = [...results[0], ...results[1], ...results[2], ...results[3]];
 
