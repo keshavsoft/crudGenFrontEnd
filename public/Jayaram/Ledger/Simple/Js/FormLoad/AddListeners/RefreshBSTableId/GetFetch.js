@@ -21,27 +21,26 @@ let LocalFetchAll = async () => {
     const results = await Promise.allSettled(promises);
     let ClubbedArray = [];
 
-    //console.log("results : ", results);
+    console.log("results : ", results);
     if (results[0].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[0].value];
-    if (results[1].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[1].value];
+    if (results[1].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...jFLocalHeadRows({inData : results[1].value})];
     if (results[2].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[2].value];
-    if (results[3].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[3].value];
-
-    // ClubbedArray = [...ClubbedArray, ...results[1].value, ...results[2].value, ...results[3].value];
-
-    // const ClubbedArray = [...results[0], ...results[1], ...results[2], ...results[3]];
+    if (results[3].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...jFLocalHeadRows({inData : results[3].value})];
+    // if (results[3].status === "fulfilled") ClubbedArray = [...ClubbedArray, ...results[3].value];
 
     return Array.from(new Set(ClubbedArray));
 };
 
-let StartFunc_oldCode_keshav25May2024 = async () => {
-    let Account = document.getElementById("AccountId1").value;
-    let jVarLocalFetchUrl = `/bin/Openings/FilterData/nam/${Account}`;
-    const response = await fetch(jVarLocalFetchUrl);
+let jFLocalHeadRows = ({inData}) => {
+    let jVarLocalReturnArray = [];
 
-    let jVarLocalFromResponse = await response.json();
+    jVarLocalReturnArray = inData.map(element => {
+        element.amt = -element.amt;
 
-    return jVarLocalFromResponse;
-};
+        return element;
+    });
+
+    return jVarLocalReturnArray;
+}
 
 export { StartFunc };
