@@ -3,13 +3,13 @@
     <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
             <img src="../assets/img/logo.png" alt="">
-            <span class="d-none d-lg-block">keshavSoft</span>
+            <span class="d-none d-lg-block">{{menuItem.controls.headerControls.profileName if menuItem.controls.headerControls.profileName else 'KeshavSoft' }}</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
     <!-- End Logo -->
 
-    {% if  not menuItem.headerControls.hideSearchBar %}
+    {% if  not menuItem.controls.headerControls.hideSearchBar %}
     <div class="search-bar">
         <form class="search-form d-flex align-items-center" method="POST" action="#">
             <input type="text" name="query" placeholder="Search" title="Enter search keyword">
@@ -28,7 +28,7 @@
                 </a>
             </li>
             <!-- End Search Icon-->
-            {% if not menuItem.headerControls.hideNotification %}
+            {% if not menuItem.controls.headerControls.hideNotification %}
             <li class="nav-item dropdown">
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
@@ -106,7 +106,7 @@
 
             </li>
             {% endif %}
-            {% if not menuItem.headerControls.hideMessage %}
+            {% if not menuItem.controls.headerControls.hideMessage %}
             <li class="nav-item dropdown">
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
@@ -179,11 +179,11 @@
 
             
             <!-- End Messages Nav -->
-            {% if not menuItem.headerControls.hideProfile %}
+            {% if not menuItem.controls.headerControls.hideProfile %}
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="../assets/img/{{menuItem.headerControls.profileImage if menuItem.headerControls.profileImage else 'profile-img.jpg' }}" alt="Profile" class="rounded-circle">
+                    <img src="../assets/img/{{menuItem.controls.headerControls.profileImage if menuItem.controls.headerControls.profileImage else 'profile-img.jpg' }}" alt="Profile" class="rounded-circle">
                     <span class="d-none d-md-block dropdown-toggle ps-2">N.Keshav</span>
                 </a>
                 <!-- End Profile Iamge Icon -->
