@@ -3,7 +3,7 @@ const StartFunc = ({ InData }) => {
     let k1 = document.getElementById("PrintDiv");
 
     k1.innerHTML += `---------------------------------------------\n`
-    k1.innerHTML += ` <span style="font-size: 13px;">#   ItemName                          Rate</span>\n`
+    k1.innerHTML += ` <span style="font-size: 13px;">#   ItemName           Rate           AddOn</span>\n`
     // k1.innerHTML += `---------------------------------------------\n`
     k1.innerHTML += `     <span style="font-size: 13px;">Discount                          G-Rate</span>\n`
     k1.innerHTML += `---------------------------------------------\n`
@@ -16,19 +16,21 @@ const StartFunc = ({ InData }) => {
         console.log("jVarLoopInsideDisPercentage:", jVarLoopInsideDisPercentage);
 
         let jVarLoopInsideGrossAmout = `${element.GrossAmount}`;
-        let jVarLoopInsideAmout = `${element.GrossAmount - element.deliveryItemDisAmount}`;
+        let jVarLoopInsideAddOnAmount = `${element.AddOnAmount}`;
+        let jVarLoopInsideAmout = `${element.GAmount - element.deliveryItemDisAmount}`;
 
 
         k1.innerHTML += `<span style="font-size: 13px;">${LocalSerialNo.toString().padStart(2, " ")}</span>`;
-        k1.innerHTML += `<span style="font-size: 13px;">${" ".repeat(4)}${jVarLoopInsideItem.padEnd(24)}</span>`;
-        k1.innerHTML += `<span style="font-size: 13px;">${jVarLoopInsideGrossAmout.padStart(13)}</span>\n`;
+        k1.innerHTML += `<span style="font-size: 13px;">${" ".repeat(4)}${jVarLoopInsideItem.padEnd(12)}</span>`;
+        k1.innerHTML += `<span style="font-size: 13px;">${jVarLoopInsideGrossAmout.padStart(11)}</span>`;
+        k1.innerHTML += `<span style="font-size: 13px;">${jVarLoopInsideAddOnAmount.padStart(13)}</span>\n`;
         k1.innerHTML += `<span style="font-size: 13px;">${jVarLoopInsideDisPercentage.padStart(10)}</span>`;
         k1.innerHTML += `<span style="font-size: 13px;">${jVarLoopInsideAmout.padStart(33)}</span>\n`;
         k1.innerHTML += `---------------------------------------------\n`
 
     });
 
-    let jVarLocalGrossAmount = LocalInData.map(element => element.GrossAmount).reduce((a, b) => a + parseInt(b), 0);
+    let jVarLocalGrossAmount = LocalInData.map(element => element.GAmount).reduce((a, b) => a + parseInt(b), 0);
     let jVarLocalDesAmount = LocalInData.map(element => element.deliveryItemDisAmount).reduce((a, b) => a + parseInt(b), 0);
     //jVarLocalDesAmount=jVarLocalDesAmount*jVarLocalGrossAmount/100;
     let LocalNetAmount = jVarLocalGrossAmount - jVarLocalDesAmount;
