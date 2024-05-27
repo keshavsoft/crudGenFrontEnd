@@ -1,0 +1,58 @@
+[
+    {
+        "name": "UserInfo",
+        "icon": "bi bi-person",
+        "url": "UserInfo.html"
+    },
+    {
+        "name": "Items",
+        "icon": "bi bi-archive",
+        "children": [
+            {
+                "name": "Create",
+                "url": "Items-Create.html",
+                "template": "Create.html"
+            },
+            {
+                "name": "ShowAll",
+                "url": "Items-ShowAll.html",
+                "template": "ShowAll.html"
+            }
+        ]
+    },
+    {
+        "name": "Customers",
+        "icon": "bi bi-archive",
+        "children": [
+            {
+                "name": "Create",
+                "url": "Customers-Create.html",
+                "template": "Customers-Create.html",
+                "headerControls":{
+                    "hideNotification": true,
+                    "hideSearchBar": true,
+                    "hideMessage": true,
+                    "hideProfile": true,
+                    "profileImage": "bhaskarprofile.webp"
+            },
+            "sidebarControls":{
+                "hideSidebar": true
+            },
+            "footerControls":{
+                "footer":"right",
+                "footerData":"Bhaskar@2024"
+            }
+    },
+            {
+                "name": "ShowAll",
+                "url": "Customers-ShowAll.html",
+                "template": "ShowAll.html"
+            }
+        ]
+    },
+    {
+        "name": "LoginInfo",
+        "icon": "bi bi-person",
+        "url": "LoginInfo.html"
+    }
+]
