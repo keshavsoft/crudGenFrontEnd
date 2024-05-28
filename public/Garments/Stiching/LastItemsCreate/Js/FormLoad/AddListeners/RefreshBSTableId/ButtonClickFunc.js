@@ -6,7 +6,7 @@ let StartFunc = async () => {
     await StartFuncFetchGetFunc();
     await StartFuncFetchFromEndPoint();
 
-    jFLocalHideSpinner();
+    // jFLocalHideSpinner();
 
     let jVarLocalDataNeeded = localStorage.getItem(ConfigJson.tableName);
     let jVarLocalParseData = JSON.parse(jVarLocalDataNeeded);
