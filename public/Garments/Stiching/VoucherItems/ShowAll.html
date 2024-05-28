@@ -361,9 +361,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="../Create/Create.html">
+                <a class="nav-link collapsed" href="../LastItemsCreate/Create.html">
                     <i class="bi bi-database"></i></i>
-                    <span>LastItems-Create</span>
+                    <span>LastItemsCreate</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -455,9 +455,9 @@
                             </div>
                             <table id="table" data-show-footer="true">
                                 <thead>
-                                    <tr>
+                                    <!-- <tr>
                                         <th>
-                                            #
+                                            
                                         </th>
                                         <th>
                                             ProductName
@@ -478,8 +478,8 @@
                                         <th>
                                             DateTime
                                         </th>
-                                    </tr>
-                                    <tr>
+                                    </tr> -->
+                                    <!-- <tr>
                                         <th>
                                         </th>
                                         <th>
@@ -492,10 +492,10 @@
                                         <th>
                                             <input type="number" class="form-control" id="GrossAmount" name="GrossAmount">
                                         </th>
-                                        <!-- <th>
+                                        <th>
                                             <input type="text" class="form-control" id="DisPercent" name="DisPercent">
                                         </th> -->
-                                        <th>
+                                        <!-- <th>
                                             <input type="text" class="form-control" id="ItemDescription"
                                                 name="ItemDescription">
                                         </th>
@@ -506,20 +506,20 @@
                                         <th></th>
                                         <th> <button class="btn btn-outline-success" type="button"
                                                 id="TableFooterSaveButtonId">Save</button></th>
-                                    </tr>
+                                    </tr> -->
                                     <tr id="tableHeadRow">
-                                        <th data-field="id" data-formatter="jFGlobalSerialColumn"></th>
+                                        <th data-field="id" data-formatter="jFGlobalSerialColumn">#</th>
 
-                                        <th data-field="ProductName" data-footer-formatter="jFLocalItemCount"></th>
-                                        <th data-field="GrossAmount" data-footer-formatter="jFLocalColumnTotal">
+                                        <th data-field="ProductName" data-footer-formatter="jFLocalItemCount">ProductName</th>
+                                        <th data-field="GrossAmount" data-footer-formatter="jFLocalColumnTotal">GrossAmount
                                         </th>
                                         <!-- <th data-field="DisPercent"></th> -->
-                                        <th data-field="ItemDescription"></th>
-                                        <th data-field="AddOnAmount" data-footer-formatter="jFLocalAddonAmountTotal">
+                                        <th data-field="ItemDescription">Description</th>
+                                        <th data-field="AddOnAmount" data-footer-formatter="jFLocalAddonAmountTotal">AddOn
                                         </th>
-                                        <th data-field="GAmount" data-footer-formatter="jFLocalGAmountTotal"></th>
+                                        <th data-field="GAmount" data-footer-formatter="jFLocalGAmountTotal">GAmount</th>
                                         <!-- <th data-field="FK"></th> -->
-                                        <th data-field="DateTime"></th>
+                                        <th data-field="DateTime">DateTime</th>
                                     </tr>
 
                                 </thead>
