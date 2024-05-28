@@ -13,10 +13,14 @@ const StartFunc = ({ InData }) => {
         // let jVarLoopInsideRate = `${element.UnitRate}`;
         // let jVarLoopInsideDisPercentage = `${element.DisPercentage}%-${element.deliveryItemDisAmount}`;
         let jVarLoopInsideDisPercentage = `${element.deliveryItemDisAmount}`;
-        console.log("jVarLoopInsideDisPercentage:", jVarLoopInsideDisPercentage);
-
+        if(!jVarLoopInsideDisPercentage) {
+            jVarLoopInsideDisPercentage = "0";
+        }
         let jVarLoopInsideGrossAmout = `${element.GrossAmount}`;
         let jVarLoopInsideAddOnAmount = `${element.AddOnAmount}`;
+        if(!jVarLoopInsideAddOnAmount) {
+            jVarLoopInsideAddOnAmount = "0";
+        }
         let jVarLoopInsideAmout = `${element.GAmount - element.deliveryItemDisAmount}`;
 
 
@@ -31,8 +35,11 @@ const StartFunc = ({ InData }) => {
     });
 
     let jVarLocalGrossAmount = LocalInData.map(element => element.GAmount).reduce((a, b) => a + parseInt(b), 0);
-    let jVarLocalDesAmount = LocalInData.map(element => element.deliveryItemDisAmount).reduce((a, b) => a + parseInt(b), 0);
+    let jVarLocalDesAmount = LocalInData.map(element => element.deliveryItemDisAmount?element.deliveryItemDisAmount:0).reduce((a, b) => a + parseInt(b), 0);
     //jVarLocalDesAmount=jVarLocalDesAmount*jVarLocalGrossAmount/100;
+    if(!jVarLocalDesAmount) {
+        jVarLocalDesAmount = 0;
+    }
     let LocalNetAmount = jVarLocalGrossAmount - jVarLocalDesAmount;
     
     // let jVarLoopInsideDisCount = LocalInData.map(element => {
