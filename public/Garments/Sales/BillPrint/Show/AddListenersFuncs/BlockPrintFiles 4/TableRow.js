@@ -18,6 +18,12 @@ const StartFunc = () => {
         let jVarLoopInsideGST = `${element.GST}`;
         let jVarLoopInsideDisPercentage = `${element.DisPercentage}%-${element.DisRate}`;
         let jVarLoopInsideGrossAmout = `${element.GrossAmout}`;
+        let jVarLoopInsideQty = `${element.Qty}`;
+        
+        if(jVarLoopInsideQty > 0){
+            let jVarLoopUnitRateDummy =parseFloat(element.UnitRate) * parseFloat(element.Qty);
+            jVarLoopInsideRate = jVarLoopUnitRateDummy.toString();
+        }
 
         k1.innerHTML += `<span style="font-size: 13px;">${element.sno.toString().padStart(2, " ")}</span>`;
         k1.innerHTML += `<span style="font-size: 13px;">${" ".repeat(4)}${jVarLoopInsideItem.padEnd(24)}</span>`;
@@ -30,7 +36,7 @@ const StartFunc = () => {
     });
 
     let jVarLoopInsideUnitRate = jVarLocalInventoryDataAsJson.map(element => {
-        return element.UnitRate;
+        return (element.Qty > 0) ? parseFloat(element.UnitRate) * parseFloat(element.Qty) : parseFloat(element.UnitRate);
     });
 
     let jVarLocalGrossTotal = jVarLocalInventoryDataAsJson.map(element => {
