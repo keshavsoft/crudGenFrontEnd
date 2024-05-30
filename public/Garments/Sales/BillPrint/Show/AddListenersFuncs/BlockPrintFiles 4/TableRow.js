@@ -2,7 +2,7 @@ const StartFunc = () => {
     let jVarLocalBillData = localStorage.getItem("BillData");
     let jVarLocalHeadData = JSON.parse(jVarLocalBillData);
     let jVarLocalInventoryDataAsJson = jFLocalSortFunc();
-
+    
     let k1 = document.getElementById("PrintDiv");
     let k2 = document.getElementById("TemplateForGridHeader");
 
@@ -39,7 +39,7 @@ const StartFunc = () => {
     let jVarLoopInsideDisCount = jVarLocalInventoryDataAsJson.map(element => {
         return element.DisRate;
     });
-    let jvarLocaltoatalUnitRate = jVarLocalGrossTotal.reduce((a, b) => a + b, 0)
+    let jvarLocaltoatalUnitRate = jVarLoopInsideUnitRate.reduce((a, b) => a + b, 0)
     let jvarLocaltoatalDisRate = jVarLoopInsideDisCount.reduce((a, b) => a + b, 0)
     let localNetAmount = jvarLocaltoatalUnitRate - jvarLocaltoatalDisRate;
 
