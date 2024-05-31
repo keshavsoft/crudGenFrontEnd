@@ -308,11 +308,22 @@
                     <span>Create</span>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link collapsed" href="../ShowAll/ShowAll.html">
-                    <i class="bi bi-table"></i></i>
-                    <span>ShowAll</span>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#show-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-table"></i><span>Show</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
+                <ul id="show-nav" class="nav-content " data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="../ShowAll/ShowAll.html">
+                      <i class="bi bi-circle"></i><span>Url</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../ShowFetch/ShowAll.html" class="active">
+                      <i class="bi bi-circle"></i><span>Fetch</span>
+                    </a>
+                  </li>
+                </ul>
             </li>
 
             <li class="nav-item ">
@@ -358,7 +369,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#Alter-nav" data-bs-toggle="collapse" href="#">
+                <a class="nav-link " data-bs-target="#Alter-nav" data-bs-toggle="collapse" href="#">
                   <i class="bi bi-pencil-square"></i><span>Alter</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="Alter-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
@@ -396,7 +407,8 @@
                     <li class="breadcrumb-item"><a href="../../../../index.html">Home</a></li>
                     <li class="breadcrumb-item"><a href="../../../index.html">Accounts</a></li>
                     <li class="breadcrumb-item"><a href="../../index.html">Masters</a></li>
-                    <li class="breadcrumb-item active">Accounts</li>
+                    <li class="breadcrumb-item"><a href="../../index.html">Accounts</a></li>
+                    <li class="breadcrumb-item active">Alter</li>
                 </ol>
             </nav>
         </div>
