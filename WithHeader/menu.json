@@ -1,6 +1,6 @@
 [
     {
-        "name": "UserInfo",
+        "name": "Info",
         "icon": "bi bi-person",
         "url": "UserInfo.html"
     },
@@ -55,5 +55,21 @@
         "name": "LoginInfo",
         "icon": "bi bi-person",
         "url": "LoginInfo.html"
+    },
+    {
+        "name":"Accounts",
+        "icon":"bi bi-person",
+        "children":[
+            {
+                "name":"Create",
+                "url":"Accounts-Create.html",
+                "template":"Create.html"
+            },
+            {
+                "name":"ShowAll",
+                "url":"Accounts-ShowAll.html",
+                "template":"ShowAll.html"
+            }
+        ]
     }
 ]
