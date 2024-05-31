@@ -333,6 +333,10 @@
 
 
   <main class="main-content position-relative border-radius-lg ">
+
+    <datalist id="SuggestCustomerNumbers"></datalist>
+    <datalist id="SuggestCustomerNames"></datalist>
+
     <!-- Navbar -->
 
     <nav class="navbar navbar-main navbar-expand-lg  px-0 mx-4 shadow-none border-radius-xl z-index-sticky "
@@ -528,7 +532,7 @@
                 <div class="col-md-12">
                   <label class="col-md-4 col-form-label">Mobile</label>
                   <div class="col-md-8">
-                    <input kvs1="" id="CustomerNumber" name="CustomerNumber" data-dataattribute="Description" value=""
+                    <input kvs1="" list="SuggestCustomerNumbers" id="CustomerNumber" name="CustomerNumber" data-dataattribute="Description" value=""
                       data-clienteval="" type="Number" class="form-control" placeholder="Enter Mobile" min="0"
                       autocomplete="off" required autofocus>
                     <div class="invalid-feedback " id="CustomerNumberClass">
@@ -541,7 +545,7 @@
                   <label class="col-md-4 col-form-label">CustomerName</label>
 
                   <div class="col-md-8">
-                    <input kvs1="" id="CustomerName" name="CustomerName" data-clienteval="" type="text"
+                    <input kvs1="" list="SuggestCustomerNames" id="CustomerName" name="CustomerName" data-clienteval="" type="text"
                       class="form-control" placeholder="Enter Customer Name" autocomplete="off" required >
                     <div class="invalid-feedback">
                       Should not be Empty!!

@@ -11,12 +11,14 @@ let StartFunc = () => {
             let localdisPercentage = parseFloat(jVarLocalDisPersantage.value);
             let jVarLocalRatevalue = parseFloat(jVarLocalRate.value);
             let LocalQuantity = parseFloat(jVarLocalQuantity.value);
-            
+
             if (LocalQuantity >0) {
                 jVarLocalRatevalue = parseInt(jVarLocalRatevalue*LocalQuantity);
             }
             let jVarLocalCurrentTarget = parseInt((localdisPercentage * jVarLocalRatevalue) / 100);
+
             let localWithDisValue = (jVarLocalRatevalue - jVarLocalCurrentTarget)
+            console.log("WithDiscount:",localWithDisValue);
             jVarLocalDisRate.value = jVarLocalCurrentTarget;
             jVarLocalGrossAmout.value = localWithDisValue;
 

@@ -3,14 +3,14 @@ let StartFunc = async ({ inFetchData }) => {
     let LocalinFetchData = await inFetchData.json();
     let jVarLocalLastRecord = LocalinFetchData[LocalinFetchData.length - 1];
 
-    jFLocalToInputCustomerName({ inValue: jVarLocalLastRecord.CustomerName })
+    jFLocalToInputCustomerNumber({ inValue: jVarLocalLastRecord.CustomerNumber })
     jFLocalToInputGSTNumber({ inValue: jVarLocalLastRecord.GSTNumber })
 };
 
 export { StartFunc }
 
-let jFLocalToInputCustomerName = ({ inValue }) => {
-    let jVarLocalHtmlId = 'CustomerName';
+let jFLocalToInputCustomerNumber = ({ inValue }) => {
+    let jVarLocalHtmlId = 'CustomerNumber';
     let jVarLocalCustomerName = document.getElementById(jVarLocalHtmlId);
 
     if (jVarLocalCustomerName === null === false) {
@@ -25,7 +25,7 @@ let jFLocalToInputGSTNumber = ({ inValue }) => {
     if (jVarLocalGSTNumber === null === false) {
         jVarLocalGSTNumber.value = inValue;
     };
-    if(inValue === undefined){
+    if (inValue === undefined) {
         jVarLocalGSTNumber.value="";
     }
 };

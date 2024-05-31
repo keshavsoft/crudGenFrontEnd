@@ -1,8 +1,12 @@
 import { StartFunc as StartFuncBillNumber } from "./fetch.js";
+import { StartFunc as SuggestCustomerNames } from "./SuggestCustomerNames.js";
+import { StartFunc as SuggestCustomerNumbers } from "./SuggestCustomerNumbers.js";
 
 const StartFunc = () => {
     jFShowDateTime()
     StartFuncBillNumber();
+    SuggestCustomerNames();
+    SuggestCustomerNumbers();
 };
 
 const jFShowDateTime = () => {
