@@ -6,7 +6,7 @@ let StartFunc = async ({ inBodyData }) => {
     let LocaltableName = ConfigJson.tableName;
 
     let jVarLocalFetchHeaders = await StartFuncFetchHeaders({ inBodyData });
-    let jVarLocalFetchUrl = `/${LocalroutePath}/${LocaltableName}`;
+    let jVarLocalFetchUrl = `/${LocalroutePath}/${LocaltableName}/WithCheckAndGenPk`;
     let response = await fetch(jVarLocalFetchUrl, jVarLocalFetchHeaders);
     let data = await response.json();
 
