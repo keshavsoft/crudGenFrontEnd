@@ -19,7 +19,7 @@ let jFLocalPromiseAll = async () => {
     let jVarLocalReturnArray = a.value.map(LoopQrCode => {
 
         LoopQrCode.Purchased = "false";
-        LoopQrCode.Sold = "false";
+        LoopQrCode.Sold = "InStoke";
         LoopQrCode.ReturnStatus = "false";
 
         let LoopInideFind = b.value.find(LoopPurchase => LoopPurchase.pk === LoopQrCode.PurchasePk);
@@ -32,11 +32,11 @@ let jFLocalPromiseAll = async () => {
         // if (LoopQrCode.pk === "1") {
         //     console.log(" LoopQrCode.pk : ", LoopQrCode, LoopInideSales,c);
         // };
-        if (LoopInideSales === undefined === false) LoopQrCode.Sold = "true";
+        if (LoopInideSales === undefined === false) LoopQrCode.Sold = "Sold";
 
         let LoopInideSalesReturn = d.value.find(LoopSaleReturn => LoopSaleReturn.QrCode === LoopQrCode.pk);
 
-        if (LoopInideSalesReturn === undefined === false) LoopQrCode.ReturnStatus = "true";
+        if (LoopInideSalesReturn === undefined === false) LoopQrCode.ReturnStatus = "Return";
 
 
 
