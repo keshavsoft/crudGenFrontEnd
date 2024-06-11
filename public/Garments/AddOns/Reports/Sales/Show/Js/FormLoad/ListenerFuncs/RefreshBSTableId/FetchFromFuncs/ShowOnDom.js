@@ -1,13 +1,12 @@
 import { StartFunc as StartFuncAfterFetch } from "./AfterFetch/EntryFile.js";
-import { StartFunc as StartFuncBills } from "./Promises/ShowVoucherDetails/PostFetch.js";
 import { StartFunc as StartFuncItemDetails } from "./Promises/ShowItemDetails/EntryFile.js";
 import { StartFunc as StartFuncShowPos } from "./Promises/ShowPos/PostFetch.js";
 
 let StartFunc = async () => {
-    const [a, b, c] = await Promise.all([StartFuncItemDetails(), StartFuncBills(), StartFuncShowPos()]);
+    const [a, b] = await Promise.all([StartFuncItemDetails(), StartFuncShowPos()]);
 
     let jVarLocalDcData = a;
-    let jVarLocalSalePOS = [...b, ...c];
+    let jVarLocalSalePOS = b;
 
     let jVarLocalShowOnDomData = jFLocalCheck({ QrCodeData: jVarLocalDcData, SaleDataPOS: jVarLocalSalePOS })
 
@@ -23,7 +22,7 @@ const jFLocalCheck = ({ QrCodeData, SaleDataPOS }) => {
             if (element.BillPk == e.pk) {
                 element.PaymentMode = e.PaymentMode
                 element.PaymentMode = e.PaymentMode
-                element.salePOSDateTime = e.Date
+                element.salePOSDateTime = e.Date.split("-").reverse().join("-")
                 let OnlyYear = new Date(element.salePOSDateTime);
                 let OnlyMonth = new Date(element.salePOSDateTime);
                 element.PosOnlyYear = OnlyYear.getFullYear();

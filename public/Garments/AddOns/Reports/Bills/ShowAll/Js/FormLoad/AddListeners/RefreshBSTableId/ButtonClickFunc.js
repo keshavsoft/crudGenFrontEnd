@@ -26,6 +26,7 @@ let jFLocalInsertAggValues = async () => {
    let jVarLocalReturnObject = jVarLocalPos.map(loopPos => {
         loopPos.AggValues = {};
         loopPos.AggValues.QrCodeDetails = jVarLocalBillsQrCode.filter(e => e.BillPk == loopPos.pk);
+        // console.log("loopPos.AggValues.QrCodeDetails:",loopPos.AggValues.QrCodeDetails);
         return loopPos;
     });
 

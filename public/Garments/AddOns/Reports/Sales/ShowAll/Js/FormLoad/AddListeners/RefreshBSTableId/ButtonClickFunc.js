@@ -4,8 +4,10 @@ let StartFunc = async () => {
     let jVarLocalQrCodeData = await jFLocalFetchBillsQrCode();
 
     var $table = $('#table');
+    let LocalArrayReverseData = jVarLocalQrCodeData.slice().reverse();
+
     $table.bootstrapTable({
-        data: jVarLocalQrCodeData
+        data: LocalArrayReverseData
     });
 };
 

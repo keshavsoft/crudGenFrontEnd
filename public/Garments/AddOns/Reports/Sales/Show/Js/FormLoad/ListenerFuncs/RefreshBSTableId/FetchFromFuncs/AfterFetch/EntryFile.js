@@ -1,9 +1,10 @@
 let StartFunc = ({ inDataToShow }) => {
     jFLocalHideSpinner();
     let jVarLocalDataToShow = inDataToShow;
+    let LocalArrayReverseData = jVarLocalDataToShow.slice().reverse();
 
     var $table = $('#table');
-    $table.bootstrapTable("load", jVarLocalDataToShow);
+    $table.bootstrapTable("load", LocalArrayReverseData);
 
 };
 
