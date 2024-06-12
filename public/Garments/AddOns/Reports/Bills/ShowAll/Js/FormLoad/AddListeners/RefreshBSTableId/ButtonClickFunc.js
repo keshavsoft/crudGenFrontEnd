@@ -1,4 +1,5 @@
 import { StartFunc as StartFuncBillsQrCodeExpenFile } from "./OnExpandRowFunc.js";
+import posUrlJson from './posUrl.json' with {type: 'json'};
 
 let StartFunc = async () => {
     jFLocalHideSpinner();
@@ -6,6 +7,7 @@ let StartFunc = async () => {
     let jVarLocalQrCodeData = await jFLocalInsertAggValues();
 
     var $table = $('#table');
+
     $table.bootstrapTable({
         data: jVarLocalQrCodeData,
         detailView: true,
@@ -18,15 +20,14 @@ let jFLocalHideSpinner = () => {
     jVarLocalSpinnerId.style.display = "none";
 };
 
-
 let jFLocalInsertAggValues = async () => {
     let jVarLocalPos = await jFLocalFetchpos();
     let jVarLocalBillsQrCode = await jFLocalFetchBillsQrCode();
 
-   let jVarLocalReturnObject = jVarLocalPos.map(loopPos => {
+    let jVarLocalReturnObject = jVarLocalPos.map(loopPos => {
         loopPos.AggValues = {};
         loopPos.AggValues.QrCodeDetails = jVarLocalBillsQrCode.filter(e => e.BillPk == loopPos.pk);
-        // console.log("loopPos.AggValues.QrCodeDetails:",loopPos.AggValues.QrCodeDetails);
+
         return loopPos;
     });
 
@@ -34,7 +35,7 @@ let jFLocalInsertAggValues = async () => {
 };
 
 let jFLocalFetchpos = async () => {
-    let jVarLocalFetchUrl = "/bin/pos/DataOnly";
+    let jVarLocalFetchUrl = posUrlJson.url;
     const response = await fetch(jVarLocalFetchUrl);
 
     const text = await response.json();
