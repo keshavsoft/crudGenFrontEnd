@@ -1,5 +1,6 @@
 import { StartFunc as StartFuncBillsQrCodeExpenFile } from "./OnExpandRowFunc.js";
 import posUrlJson from './posUrl.json' with {type: 'json'};
+import BillQR from './BilllQr.json' with {type: 'json'};
 
 let StartFunc = async () => {
     jFLocalHideSpinner();
@@ -43,7 +44,7 @@ let jFLocalFetchpos = async () => {
 };
 
 let jFLocalFetchBillsQrCode = async () => {
-    let jVarLocalFetchUrl = "/bin/BillsQrCode/DataOnly";
+    let jVarLocalFetchUrl = BillQR.url;
     const response = await fetch(jVarLocalFetchUrl);
 
     const text = await response.json();
