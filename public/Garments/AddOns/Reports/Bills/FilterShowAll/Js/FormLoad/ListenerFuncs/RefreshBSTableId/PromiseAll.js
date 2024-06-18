@@ -1,14 +1,17 @@
 import { StartFunc as StartFuncAfterFetch } from "./AfterFetch/EntryFile.js";
 import { StartFunc as StartFuncItemDetails } from "./Promises/ShowItemDetails/EntryFile.js";
 import { StartFunc as StartFuncShowPos } from "./Promises/ShowPos/PostFetch.js";
+import { StartFunc as StartFuncItems } from "./Promises/Items/PostFetch.js";
 
 let StartFunc = async () => {
-    const [a, b] = await Promise.all([StartFuncItemDetails(), StartFuncShowPos()]);
+    const [a, b, c] = await Promise.all([StartFuncItemDetails(), StartFuncShowPos(), StartFuncItems()]);
 
     let jVarLocalDcData = a;
     let jVarLocalSalePOS = b;
-
-    let jVarLocalShowOnDomData = jFLocalCheck({ QrCodeData: jVarLocalDcData, SaleDataPOS: jVarLocalSalePOS })
+    let jVarLocalItems = c;
+    let jVarLocalQrWithItemsData = jFLocalGstCheck({ itemData: jVarLocalItems, productData: jVarLocalDcData });
+console.log("jVarLocalQrWithItemsData:",jVarLocalQrWithItemsData);
+    let jVarLocalShowOnDomData = jFLocalCheck({ QrCodeData: jVarLocalQrWithItemsData, SaleDataPOS: jVarLocalSalePOS })
 
     StartFuncAfterFetch({ inDataToShow: jVarLocalShowOnDomData });
 };
@@ -18,42 +21,70 @@ let jFLocalCheck = ({ SaleDataPOS, QrCodeData }) => {
     let jVarLocalBillsQrCode = QrCodeData;
 
     let jVarLocalReturnObject = jVarLocalPos.map(loopPos => {
+        // console.log("loopPos::",loopPos);
         loopPos.AggValues = {};
         let SaleItemData = jVarLocalBillsQrCode.filter(e => e.BillPk == loopPos.pk);
-        loopPos.AggValues.DisRate =  SaleItemData.map(el => el.DisRate).reduce((a, b) => a + b, 0);
-        loopPos.AggValues.UnitRate =  SaleItemData.map(el => el.UnitRate).reduce((a, b) => a + b, 0);
-        loopPos.AggValues.GrossAmout =  SaleItemData.map(el => el.GrossAmout).reduce((a, b) => a + b, 0);
+        loopPos.AggValues.DisRate = SaleItemData.map(el => el.DisRate).reduce((a, b) => a + b, 0);
+        loopPos.AggValues.UnitRate = SaleItemData.map(el => el.UnitRate).reduce((a, b) => a + b, 0);
+        loopPos.AggValues.GrossAmout = SaleItemData.map(el => el.GrossAmout).reduce((a, b) => a + b, 0);
         loopPos.AggValues.DisPercentage = SaleItemData.map(el => el.DisPercentage).reduce((a, b) => a + b, 0);
+        loopPos.AggValues.GST = parseFloat(SaleItemData.map(el => el.GSTAmount).reduce((a, b) => a + b, 0)).toFixed(2);
+        loopPos.AggValues.SGST = parseFloat(SaleItemData.map(el => el.SGSTAmount).reduce((a, b) => a + b, 0)).toFixed(2);
+        loopPos.AggValues.CGST = parseFloat(SaleItemData.map(el => el.CGSTAmount).reduce((a, b) => a + b, 0)).toFixed(2);
+        loopPos.AggValues.AmountExcludingGST = parseFloat(SaleItemData.map(el => el.AmountExcludingGST).reduce((a, b) => a + b, 0)).toFixed(2);
+        loopPos.AggValues.AmountIncludingGST = parseFloat(SaleItemData.map(el => el.AmountIncludingGST).reduce((a, b) => a + b, 0)).toFixed(2);
+
+        loopPos.AggValues.GSTPercentage = SaleItemData.map(el => el.GSTPercentage);
         return loopPos;
     });
 
     return jVarLocalReturnObject;
 };
+const jFLocalGstCheck = ({ productData, itemData }) => {
+    let LocalArray = [];
+    productData.forEach(product => {
+        const matchingItem = itemData.find(item => item.ItemName === product.ProductName);
+        if (matchingItem) {
+            const gstRate = parseFloat(matchingItem.GST);
+            const gstAmount = product.GrossAmout * (gstRate / 100);
+            const cgstAmount = gstAmount / 2;
+            const sgstAmount = gstAmount / 2;
+            const amountIncludingGST = product.GrossAmout + gstAmount; // Amount including GST
+            const amountExcludingGST = product.GrossAmout; // Initial amount excluding GST
 
-const jFLocalCheck1 = ({ QrCodeData, SaleDataPOS }) => {
-
-    let localReturnArray = [];
-
-    localReturnArray = QrCodeData.map((element) => {
-        SaleDataPOS.map(e => {
-            if (element.BillPk == e.pk) {
-                element.PaymentMode = e.PaymentMode
-                element.PaymentMode = e.PaymentMode
-                element.salePOSDateTime = e.Date;
-                let OnlyYear = new Date(element.salePOSDateTime);
-                let OnlyMonth = new Date(element.salePOSDateTime);
-                element.PosOnlyYear = OnlyYear.getFullYear();
-                element.PosOnlyMonth = OnlyMonth.getMonth() + 1;
-            };
-            return element;
-        });
-
-        return element;
+            // Injecting calculated GST values into productData
+            product.GSTPercentage = gstRate;
+            product.GSTAmount = gstAmount;
+            product.CGSTAmount = cgstAmount;
+            product.SGSTAmount = sgstAmount;
+            product.AmountIncludingGST = amountIncludingGST; // Optional: If you need to track this
+            product.AmountExcludingGST = amountExcludingGST;
+            LocalArray.push(product);
+        }
     });
+    return LocalArray;
+};
 
 
-    return localReturnArray;
+const jFLocalGstCheck1 = ({ productData, itemData }) => {
+    let LocalArray = [];
+    productData.forEach(product => {
+        const matchingItem = itemData.find(item => item.ItemName === product.ProductName);
+        if (matchingItem) {
+            const gstRate = parseFloat(matchingItem.GST);
+            const gstAmount = product.GrossAmout * (gstRate / 100);
+            const cgstAmount = gstAmount / 2;
+            const sgstAmount = gstAmount / 2;
 
+            // Injecting calculated GST values into productData
+            product.GSTPercentage = gstRate;
+            product.GSTAmount = gstAmount;
+            product.CGSTAmount = cgstAmount;
+            product.SGSTAmount = sgstAmount;
+            LocalArray.push(product);
+        }
+    });
+    return LocalArray;
 };
 
 export { StartFunc }
