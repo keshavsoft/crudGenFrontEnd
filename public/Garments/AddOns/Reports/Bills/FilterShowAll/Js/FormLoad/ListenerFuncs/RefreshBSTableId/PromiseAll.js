@@ -4,87 +4,132 @@ import { StartFunc as StartFuncShowPos } from "./Promises/ShowPos/PostFetch.js";
 import { StartFunc as StartFuncItems } from "./Promises/Items/PostFetch.js";
 
 let StartFunc = async () => {
-    const [a, b, c] = await Promise.all([StartFuncItemDetails(), StartFuncShowPos(), StartFuncItems()]);
+    const [ItemDetails, BillData, ItemsMaster] = await Promise.all([StartFuncItemDetails(), StartFuncShowPos(), StartFuncItems()]);
 
-    let jVarLocalDcData = a;
-    let jVarLocalSalePOS = b;
-    let jVarLocalItems = c;
-    let jVarLocalQrWithItemsData = jFLocalGstCheck({ itemData: jVarLocalItems, productData: jVarLocalDcData });
-console.log("jVarLocalQrWithItemsData:",jVarLocalQrWithItemsData);
-    let jVarLocalShowOnDomData = jFLocalCheck({ QrCodeData: jVarLocalQrWithItemsData, SaleDataPOS: jVarLocalSalePOS })
+    let jVarLocalItemDetails = ItemDetails;
+    let jVarLocalBillData = Object.create(BillData);
+    let jVarLocalItemsMaster = ItemsMaster;
 
-    StartFuncAfterFetch({ inDataToShow: jVarLocalShowOnDomData });
-};
-
-let jFLocalCheck = ({ SaleDataPOS, QrCodeData }) => {
-    let jVarLocalPos = SaleDataPOS;
-    let jVarLocalBillsQrCode = QrCodeData;
-
-    let jVarLocalReturnObject = jVarLocalPos.map(loopPos => {
-        // console.log("loopPos::",loopPos);
-        loopPos.AggValues = {};
-        let SaleItemData = jVarLocalBillsQrCode.filter(e => e.BillPk == loopPos.pk);
-        loopPos.AggValues.DisRate = SaleItemData.map(el => el.DisRate).reduce((a, b) => a + b, 0);
-        loopPos.AggValues.UnitRate = SaleItemData.map(el => el.UnitRate).reduce((a, b) => a + b, 0);
-        loopPos.AggValues.GrossAmout = SaleItemData.map(el => el.GrossAmout).reduce((a, b) => a + b, 0);
-        loopPos.AggValues.DisPercentage = SaleItemData.map(el => el.DisPercentage).reduce((a, b) => a + b, 0);
-        loopPos.AggValues.GST = parseFloat(SaleItemData.map(el => el.GSTAmount).reduce((a, b) => a + b, 0)).toFixed(2);
-        loopPos.AggValues.SGST = parseFloat(SaleItemData.map(el => el.SGSTAmount).reduce((a, b) => a + b, 0)).toFixed(2);
-        loopPos.AggValues.CGST = parseFloat(SaleItemData.map(el => el.CGSTAmount).reduce((a, b) => a + b, 0)).toFixed(2);
-        loopPos.AggValues.AmountExcludingGST = parseFloat(SaleItemData.map(el => el.AmountExcludingGST).reduce((a, b) => a + b, 0)).toFixed(2);
-        loopPos.AggValues.AmountIncludingGST = parseFloat(SaleItemData.map(el => el.AmountIncludingGST).reduce((a, b) => a + b, 0)).toFixed(2);
-
-        loopPos.AggValues.GSTPercentage = SaleItemData.map(el => el.GSTPercentage);
-        return loopPos;
+    let jVarLocalWithBillData = jFLocalInsertBillData({
+        inItemDetails: jVarLocalItemDetails,
+        inBillData: jVarLocalBillData
     });
 
-    return jVarLocalReturnObject;
-};
-const jFLocalGstCheck = ({ productData, itemData }) => {
-    let LocalArray = [];
-    productData.forEach(product => {
-        const matchingItem = itemData.find(item => item.ItemName === product.ProductName);
-        if (matchingItem) {
-            const gstRate = parseFloat(matchingItem.GST);
-            const gstAmount = product.GrossAmout * (gstRate / 100);
-            const cgstAmount = gstAmount / 2;
-            const sgstAmount = gstAmount / 2;
-            const amountIncludingGST = product.GrossAmout + gstAmount; // Amount including GST
-            const amountExcludingGST = product.GrossAmout; // Initial amount excluding GST
+    let jVarLocalDateFilter = jVarLocalWithBillData.filter(element => element === undefined === false).filter(element => {
+        return Date.parse(element.Date) > Date.parse("2024-06-16");
+    });
 
-            // Injecting calculated GST values into productData
-            product.GSTPercentage = gstRate;
-            product.GSTAmount = gstAmount;
-            product.CGSTAmount = cgstAmount;
-            product.SGSTAmount = sgstAmount;
-            product.AmountIncludingGST = amountIncludingGST; // Optional: If you need to track this
-            product.AmountExcludingGST = amountExcludingGST;
-            LocalArray.push(product);
+    console.log("jVarLocalDateFilter : ", jVarLocalDateFilter);
+
+    let jVarLocalClubbedData = jFLocalInsertGst({
+        inItemDetails: jVarLocalDateFilter,
+        inItemsMaster: jVarLocalItemsMaster
+    });
+
+    let jVarLocalGroupedData = jFLocalGroupData({ inArray: jVarLocalClubbedData });
+    
+    jFLocalCalculateTotals({ inObject: jVarLocalGroupedData });
+
+    let jVarLocalReturnArray = jFLocalEndArray({
+        inObject: jVarLocalGroupedData,
+        inBillData: BillData
+    });
+};
+
+let jFLocalEndArray = ({ inObject, inItemDetails, inBillData }) => {
+    let jVarLocalItemDetails = inItemDetails;
+    let jVarLocalBillData = inBillData;
+
+    let jVarLocalReturnArray = [];
+
+    for (const [key, value] of Object.entries(inObject)) {
+        for (const [SecondKey, SecondValue] of Object.entries(value)) {
+            let jVarLoopInsideObject = {};
+
+            let LoopInsideFindBill = jVarLocalBillData.find(LoopMaster => {
+                return LoopMaster.BillNumber2425 === parseInt(key);
+            });
+
+            jVarLoopInsideObject.BillNumber = key;
+
+            if (LoopInsideFindBill === undefined === false) {
+                jVarLoopInsideObject.Date = LoopInsideFindBill?.Date;
+                jVarLoopInsideObject.CustomerNumber = LoopInsideFindBill?.CustomerNumber;
+                jVarLoopInsideObject.CustomerName = LoopInsideFindBill?.CustomerName;
+                jVarLoopInsideObject.GSTPercentage = parseFloat(SecondKey);
+                jVarLoopInsideObject.TotalAmount = SecondValue.TotalAmount;
+                jVarLoopInsideObject.CgstAmount = ((SecondValue.TotalAmount * jVarLoopInsideObject.GSTPercentage / (100 + jVarLoopInsideObject.GSTPercentage)) / 2).toFixed(2);
+                jVarLoopInsideObject.SgstAmount = ((SecondValue.TotalAmount * jVarLoopInsideObject.GSTPercentage / (100 + jVarLoopInsideObject.GSTPercentage)) / 2).toFixed(2);
+            };
+
+            jVarLocalReturnArray.push(jVarLoopInsideObject);
         }
-    });
-    return LocalArray;
+    }
+
+    return jVarLocalReturnArray;
 };
 
+let jFLocalGroupData = ({ inArray }) => {
+    function groupBy(arr, branch) {
+        return Object.groupBy(arr, item => item[branch]);
+    };
 
-const jFLocalGstCheck1 = ({ productData, itemData }) => {
-    let LocalArray = [];
-    productData.forEach(product => {
-        const matchingItem = itemData.find(item => item.ItemName === product.ProductName);
-        if (matchingItem) {
-            const gstRate = parseFloat(matchingItem.GST);
-            const gstAmount = product.GrossAmout * (gstRate / 100);
-            const cgstAmount = gstAmount / 2;
-            const sgstAmount = gstAmount / 2;
+    const grouped = groupBy(inArray, "BillNumber");
 
-            // Injecting calculated GST values into productData
-            product.GSTPercentage = gstRate;
-            product.GSTAmount = gstAmount;
-            product.CGSTAmount = cgstAmount;
-            product.SGSTAmount = sgstAmount;
-            LocalArray.push(product);
+    for (const prop of Object.keys(grouped)) {
+        grouped[prop] = groupBy(grouped[prop], "ItemGst");
+    };
+
+    return grouped;
+    // GrossAmout
+};
+
+let jFLocalCalculateTotals = ({ inObject }) => {
+    for (const [key, value] of Object.entries(inObject)) {
+        for (const [SecondKey, SecondValue] of Object.entries(value)) {
+            let LoopInsideGrossAmout = SecondValue.map(element => element.GrossAmout);
+            let LoopInsideTotal = LoopInsideGrossAmout.reduce((a, b) => a + b, 0); // 10
+            SecondValue.TotalAmount = LoopInsideTotal
         }
+    };
+};
+
+let jFLocalInsertGst = ({ inItemDetails, inItemsMaster }) => {
+    let jVarLocalItemDetails = inItemDetails;
+    let jVarLocalItemsMaster = inItemsMaster;
+
+    let jVarLocalClubbedData = jVarLocalItemDetails.map(element => {
+        let LoopInsideFind = jVarLocalItemsMaster.find(LoopMaster => {
+            return LoopMaster.ItemName === element.ProductName;
+        });
+
+        return { ...element, ItemGst: LoopInsideFind?.GST };
     });
-    return LocalArray;
+
+    return jVarLocalClubbedData;
+};
+
+let jFLocalInsertBillData = ({ inItemDetails, inBillData }) => {
+    let jVarLocalItemDetails = inItemDetails;
+    let jVarLocalBillData = inBillData;
+
+    let jVarLocalClubbedData = jVarLocalItemDetails.map(element => {
+        let LoopInsideFind = jVarLocalBillData.find(LoopMaster => {
+            return LoopMaster.pk === parseInt(element.BillPk);
+        });
+
+        if (LoopInsideFind === undefined === false) {
+            return {
+                ...element,
+                CustomerNumber: LoopInsideFind?.CustomerNumber,
+                Date: LoopInsideFind?.Date,
+                BillNumber: LoopInsideFind?.BillNumber2425,
+                CustomerName: LoopInsideFind?.CustomerName
+            };
+        };
+    });
+
+    return jVarLocalClubbedData;
 };
 
 export { StartFunc }
