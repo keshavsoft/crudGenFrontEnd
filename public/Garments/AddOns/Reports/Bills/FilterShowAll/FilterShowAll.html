@@ -383,14 +383,23 @@
                                 <thead>
                                     <tr id="tableHeadRow">
                                         <th data-field="id" data-formatter="jFGlobalSerialColumn">#</th>
-                                        <th data-field="Date" data-filter-control="select">Date</th>
                                         <th data-field="BillNumber" data-filter-control="select">Bill Number</th>
+                                        <th data-formatter="JFDate" data-filter-control="select">Date</th>
                                         <th data-field="CustomerName">CustomerName</th>
                                         <th data-field="CustomerNumber" data-visible="false">CustomerNumber</th>
+                                        <th data-field="UnitRate" data-footer-formatter="jFLocalUnitRateTotal">Gross Amt
+                                        </th>
+                                        <th data-field="DisRate" data-footer-formatter="jFLocalDisRateTotal">Disc</th>
+                                        <th data-field="BasicAmt" data-footer-formatter="jFLocalBasicAmtTotal">Basic Amt
+                                        </th>
                                         <th data-field="GSTPercentage">GSTPercentage</th>
-                                        <th data-field="TotalAmount">TotalAmount</th>
-                                        <th data-field="CgstAmount">CgstAmount</th>
-                                        <th data-field="SgstAmount">SgstAmount</th>
+                                        <th data-field="CgstAmount" data-footer-formatter="jFCgstAmountTotal">CgstAmount
+                                        </th>
+                                        <th data-field="SgstAmount" data-footer-formatter="jFLocalSgstAmountTotal">
+                                            SgstAmount</th>
+                                        <th data-field="TotalAmount" data-footer-formatter="jFTotalAmountTotal">Total
+                                            Amt</th>
+
                                     </tr>
                                 </thead>
                             </table>
@@ -418,22 +427,71 @@
             // console.log(row);
             return index + 1;
         };
-
-
-        function jFLocalUnitRateTotal(value, row, index) {
-            let localGrossAmoutData = value.map(i => i.AggValues.UnitRate).reduce((a, b) => a + b, 0);
-            return '₹ ' + localGrossAmoutData;
-        };
-        function jFLocalDisRateTotal(value, row, index) {
-            let localGrossAmoutData = value.map(i => i.AggValues.DisRate).reduce((a, b) => a + b, 0);
-            return '₹ ' + localGrossAmoutData;
-        };
-        function jFLocalGrossAmoutTotal(value, row, index) {
-            let localGrossAmoutData = value.map(i => i.AggValues.GrossAmout).reduce((a, b) => a + b, 0);
-            return '₹ ' + localGrossAmoutData;
+        function JFDate(value, row, index) {
+            return new Date(row.Date).toLocaleDateString('en-GB')
         };
 
-        function jFLocalColumnTotal(data) {
+        function jFLocalSgstAmountTotal(data) {
+            var field = this.field
+            return '₹' + data.map(function (row) {
+                if (row[field] === undefined) {
+                    return 0;
+                } else {
+                    return +row[field];
+                };
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0)
+        }
+        function jFLocalUnitRateTotal(data) {
+            var field = this.field
+            return '₹' + data.map(function (row) {
+                if (row[field] === undefined) {
+                    return 0;
+                } else {
+                    return +row[field];
+                };
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0)
+        }
+        function jFLocalDisRateTotal(data) {
+            var field = this.field
+            return '₹' + data.map(function (row) {
+                if (row[field] === undefined) {
+                    return 0;
+                } else {
+                    return +row[field];
+                };
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0)
+        }
+        function jFLocalBasicAmtTotal(data) {
+            var field = this.field
+            return '₹' + data.map(function (row) {
+                if (row[field] === undefined) {
+                    return 0;
+                } else {
+                    return +row[field];
+                };
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0)
+        }
+        function jFCgstAmountTotal(data) {
+            var field = this.field
+            return '₹' + data.map(function (row) {
+                if (row[field] === undefined) {
+                    return 0;
+                } else {
+                    return +row[field];
+                };
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0)
+        }
+        function jFTotalAmountTotal(data) {
             var field = this.field
             return '₹' + data.map(function (row) {
                 if (row[field] === undefined) {
