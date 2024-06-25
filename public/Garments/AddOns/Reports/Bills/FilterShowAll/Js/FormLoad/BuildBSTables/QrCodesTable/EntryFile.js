@@ -1,4 +1,5 @@
 import { StartFunc as StartFuncTableTag } from "./TableTag.js";
+import columnsJson from './columns.json' with {type: 'json'};
 
 const StartFunc = () => {
     StartFuncTableTag();
@@ -7,8 +8,8 @@ const StartFunc = () => {
 
 const jFLocalInitialize = async () => {
     var $table = $('#table');
-
     $table.bootstrapTable({
+        columns: columnsJson,
         data: []
     });
 };
