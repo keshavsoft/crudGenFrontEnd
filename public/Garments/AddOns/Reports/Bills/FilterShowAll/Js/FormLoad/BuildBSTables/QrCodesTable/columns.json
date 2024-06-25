@@ -1,0 +1,11 @@
+[
+    {
+        "field": "id",
+        "title": "#",
+        "formatter": "jFGlobalSerialColumn"
+    },
+    {
+        "field": "BillNumber",
+        "title": "Bill #"
+    }
+]
