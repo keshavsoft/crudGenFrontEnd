@@ -14,4 +14,3 @@ const jFLocalInitialize = async () => {
 };
 
 export { StartFunc };
-
