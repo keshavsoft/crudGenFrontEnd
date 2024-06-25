@@ -443,8 +443,9 @@
                 return sum + i
             }, 0)
         }
-        function jFLocalUnitRateTotal(data) {
+        function jFLocalUnitRateTotal(value, row, index) {
             var field = this.field
+            console.log("value, row, index",value, row, index);
             return '₹' + data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;

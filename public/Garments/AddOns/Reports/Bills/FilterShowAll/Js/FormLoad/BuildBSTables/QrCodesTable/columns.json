@@ -7,5 +7,52 @@
     {
         "field": "BillNumber",
         "title": "Bill #"
+    },
+    {
+        "field": "Date",
+        "title": "Date",
+        "formatter": "JFDate"
+    },
+    {
+        "field": "CustomerName",
+        "title": "Customer Name"
+    },
+    {
+        "field": "CustomerNumber",
+        "title": "Customer Number"
+    },
+    {
+        "field": "UnitRate",
+        "title": "Gross Amt",
+        "formatter": "jFLocalUnitRateTotal"
+    },
+    {
+        "field": "DisRate",
+        "title": "Disc",
+        "formatter": "jFLocalDisRateTotal"
+    },
+    {
+        "field": "BasicAmt",
+        "title": "Basic Amt",
+        "formatter": "jFLocalBasicAmtTotal"
+    },
+    {
+        "field": "GSTPercentage",
+        "title": "GST %"
+    },
+    {
+        "field": "CgstAmount",
+        "title": "Cgst Amount",
+        "formatter": "jFCgstAmountTotal"
+    },
+    {
+        "field": "SgstAmount",
+        "title": "Sgst Amount",
+        "formatter": "jFLocalSgstAmountTotal"
+    },
+    {
+        "field": "TotalAmount",
+        "title": "Total Amt",
+        "formatter": "jFTotalAmountTotal"
     }
 ]
