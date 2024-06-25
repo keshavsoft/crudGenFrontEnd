@@ -24,17 +24,17 @@
     {
         "field": "UnitRate",
         "title": "Gross Amt",
-        "formatter": "jFLocalUnitRateTotal"
+        "footerFormatter": "jFLocalUnitRateTotal"
     },
     {
         "field": "DisRate",
         "title": "Disc",
-        "formatter": "jFLocalDisRateTotal"
+        "footerFormatter": "jFLocalDisRateTotal"
     },
     {
         "field": "BasicAmt",
         "title": "Basic Amt",
-        "formatter": "jFLocalBasicAmtTotal"
+        "footerFormatter": "jFLocalBasicAmtTotal"
     },
     {
         "field": "GSTPercentage",
@@ -43,16 +43,16 @@
     {
         "field": "CgstAmount",
         "title": "Cgst Amount",
-        "formatter": "jFCgstAmountTotal"
+        "footerFormatter": "jFCgstAmountTotal"
     },
     {
         "field": "SgstAmount",
         "title": "Sgst Amount",
-        "formatter": "jFLocalSgstAmountTotal"
+        "footerFormatter": "jFLocalSgstAmountTotal"
     },
     {
         "field": "TotalAmount",
         "title": "Total Amt",
-        "formatter": "jFTotalAmountTotal"
+        "footerFormatter": "jFTotalAmountTotal"
     }
 ]

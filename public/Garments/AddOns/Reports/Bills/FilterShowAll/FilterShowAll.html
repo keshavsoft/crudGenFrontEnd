@@ -427,6 +427,7 @@
             // console.log(row);
             return index + 1;
         };
+
         function JFDate(value, row, index) {
             return new Date(row.Date).toLocaleDateString('en-GB')
         };
@@ -443,9 +444,10 @@
                 return sum + i
             }, 0)
         }
-        function jFLocalUnitRateTotal(value, row, index) {
+
+        function jFLocalUnitRateTotal(data) {
             var field = this.field
-            console.log("value, row, index",value, row, index);
+            
             return '₹' + data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;
@@ -455,7 +457,8 @@
             }).reduce(function (sum, i) {
                 return sum + i
             }, 0)
-        }
+        };
+
         function jFLocalDisRateTotal(data) {
             var field = this.field
             return '₹' + data.map(function (row) {
