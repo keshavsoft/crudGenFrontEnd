@@ -7,8 +7,7 @@
     {
         "field": "BillNumber",
         "titleTooltip": "BillNumber 2024 bills",
-        "title": "Bill #",
-        "filterControl": "select"
+        "title": "Bill #"
 
     },
     {
