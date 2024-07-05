@@ -8,7 +8,7 @@ let StartFunc = async () => {
         let jVarLocalToDate = jFLocalendDateId();
 
         let jVarLocalArray = await FromServer({ inFromDate: jVarLocalFromDate, inToDate: jVarLocalToDate });
-
+console.log("jVarLocalArray:",jVarLocalArray);
         ToDom({ inDataAsArray: jVarLocalArray });
     };
 };

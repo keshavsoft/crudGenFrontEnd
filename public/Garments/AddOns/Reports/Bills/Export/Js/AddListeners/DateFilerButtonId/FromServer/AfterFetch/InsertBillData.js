@@ -13,7 +13,8 @@ let StartFunc = ({ inItemDetails, inBillData }) => {
                 CustomerNumber: LoopInsideFind?.CustomerNumber,
                 Date: LoopInsideFind?.Date,
                 BillNumber: LoopInsideFind?.BillNumber2425,
-                CustomerName: LoopInsideFind?.CustomerName
+                CustomerName: LoopInsideFind?.CustomerName,
+                PaymentMode: LoopInsideFind?.PaymentMode
             };
         };
     });

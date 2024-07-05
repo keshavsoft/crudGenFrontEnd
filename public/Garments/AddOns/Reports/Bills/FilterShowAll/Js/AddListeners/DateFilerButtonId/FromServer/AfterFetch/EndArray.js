@@ -18,6 +18,7 @@
                     jVarLoopInsideObject.Date = LoopInsideFindBill?.Date;
                     jVarLoopInsideObject.CustomerNumber = LoopInsideFindBill?.CustomerNumber;
                     jVarLoopInsideObject.CustomerName = LoopInsideFindBill?.CustomerName;
+                    jVarLoopInsideObject.PaymentMode = LoopInsideFindBill?.PaymentMode;
                     jVarLoopInsideObject.GSTPercentage = parseFloat(SecondKey);
                     jVarLoopInsideObject.TotalAmount = SecondValue.TotalAmount;
                     jVarLoopInsideObject.DisRate = SecondValue.TotalDisRate;
