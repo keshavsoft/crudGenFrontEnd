@@ -4,13 +4,12 @@ import { StartFunc as StartFuncDiscount } from "../ToDom/ProductDetails/Table/Fo
 
 let StartFunc = async ({ inProjectName, inJsonPK }) => {
     let jVarLocalQrCodeData = await jFLocalFetchQrCodeData({ inProjectName, inJsonPK });
-
     if (jVarLocalQrCodeData === undefined) {
         swal.fire({ title: "No Data", icon: "error" })
         return;
     };
 
-    StartFucToFooter({ inJSONData: jVarLocalQrCodeData.JsonData });
+    StartFucToFooter({ inJSONData: jVarLocalQrCodeData });
 
     let jVarLocalDiscountData = await jFLocalFetchQrDiscountData({ inProjectName, inRowPK: inJsonPK });
 

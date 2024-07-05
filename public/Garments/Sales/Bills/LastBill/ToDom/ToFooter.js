@@ -1,5 +1,6 @@
 let StartFunc = ({ inJSONData }) => {
     let jVarLocalinJSONData = inJSONData;
+    console.log("jVarLocalinJSONData:",jVarLocalinJSONData);
 
     let jVarLocalItemsDataList = document.getElementById("ItemsDataList");
     let jVarLocalRateId = document.getElementById("RateId1");
