@@ -441,7 +441,7 @@
 
         function jFLocalSgstAmountTotal(data) {
             var field = this.field
-            return '₹' + data.map(function (row) {
+            var total = data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;
                 } else {
@@ -449,13 +449,14 @@
                 };
             }).reduce(function (sum, i) {
                 return sum + i
-            }, 0)
+            }, 0);
+            return '₹' + total.toFixed(2);
         }
 
         function jFLocalUnitRateTotal(data) {
             var field = this.field
-            
-            return '₹' + data.map(function (row) {
+
+            var total = data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;
                 } else {
@@ -463,12 +464,14 @@
                 };
             }).reduce(function (sum, i) {
                 return sum + i
-            }, 0)
+            }, 0);
+            return '₹' + total.toFixed(2);
+
         };
 
         function jFLocalDisRateTotal(data) {
             var field = this.field
-            return '₹' + data.map(function (row) {
+            var total = data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;
                 } else {
@@ -477,10 +480,12 @@
             }).reduce(function (sum, i) {
                 return sum + i
             }, 0)
+            return '₹' + total.toFixed(2);
+
         }
         function jFLocalBasicAmtTotal(data) {
             var field = this.field
-            return '₹' + data.map(function (row) {
+            var total = data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;
                 } else {
@@ -489,10 +494,12 @@
             }).reduce(function (sum, i) {
                 return sum + i
             }, 0)
+            return '₹' + total.toFixed(2);
+
         }
         function jFCgstAmountTotal(data) {
             var field = this.field
-            return '₹' + data.map(function (row) {
+            var total = data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;
                 } else {
@@ -500,19 +507,22 @@
                 };
             }).reduce(function (sum, i) {
                 return sum + i
-            }, 0)
+            }, 0);
+            return '₹' + total.toFixed(2);
         }
         function jFTotalAmountTotal(data) {
-            var field = this.field
-            return '₹' + data.map(function (row) {
+            var field = this.field;
+            var total = data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;
                 } else {
                     return +row[field];
-                };
+                }
             }).reduce(function (sum, i) {
-                return sum + i
-            }, 0)
+                return sum + i;
+            }, 0);
+
+            return '₹' + total.toFixed(2);
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

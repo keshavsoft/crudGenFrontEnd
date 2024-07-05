@@ -49,14 +49,14 @@
     },
     {
         "field": "CgstAmount",
-        "title": "Cgst Amount",
+        "title": "CGST",
         "footerFormatter": "jFCgstAmountTotal",
         "align": "right"
 
     },
     {
         "field": "SgstAmount",
-        "title": "Sgst Amount",
+        "title": "SGST",
         "footerFormatter": "jFLocalSgstAmountTotal",
         "align": "right"
     },
@@ -66,5 +66,9 @@
         "footerFormatter": "jFTotalAmountTotal",
         "halign": "left",
         "align": "right"
+    }, {
+        "field": "PaymentMode",
+        "title": "Mode of Pay"
     }
+    
 ]
