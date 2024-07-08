@@ -5,6 +5,7 @@ import { StartFunc as StartFuncinvKeyPressCal } from "./invKeyPressCal.js";
 import { ReturnRowPK } from "./urlSearchParams.js";
 import { StartFunc as ButtonForImageDownload } from "./ToDom/ButtonForImageDownload.js";
 import { StartFunc as StartFuncSaveWithButton } from "./FetchFuncs/SaveWithButton/1-ClickFunc.js";
+import { StartFunc as ButtonForButtonForDelete } from "./ToDom/ButtonForDelete.js";
 
 let StartFunc = ({ inFolderName, inFileName, inItemName, inProjectName }) => {
     StartFuncSaveWithButton();
@@ -13,6 +14,7 @@ let StartFunc = ({ inFolderName, inFileName, inItemName, inProjectName }) => {
     localprintButtononClickFunc();
     LocalModalButtonForImageDownloadFuncs();
     localPaymentModeIdBurronClickFuncc();
+    LocalModalDeleteButtonClassFuncs();
 };
 
 let QrCodeKeyPressAssign = ({ inFolderName, inFileName, inItemName, inProjectName }) => {
@@ -46,6 +48,14 @@ let LocalModalButtonForImageDownloadFuncs = () => {
 
     for (let i = 0; i < jVarLocalUpdateClassName.length; i++) {
         jVarLocalUpdateClassName[i].addEventListener("click", ButtonForImageDownload)
+    };
+};
+
+let LocalModalDeleteButtonClassFuncs = () => {
+    let jVarLocalUpdateClassName = document.getElementsByClassName("DeleteButtonClass");
+
+    for (let i = 0; i < jVarLocalUpdateClassName.length; i++) {
+        jVarLocalUpdateClassName[i].addEventListener("click", ButtonForButtonForDelete)
     };
 };
 

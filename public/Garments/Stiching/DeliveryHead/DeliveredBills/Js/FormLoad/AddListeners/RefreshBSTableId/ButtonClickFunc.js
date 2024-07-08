@@ -7,6 +7,7 @@ let StartFunc = () => {
             var $table = $('#table');
             return jFLocalInsertItemCount(jVarLocalFetchData)
                 .then(processedData => {
+                    console.log("processedData:",processedData);
                     $table.bootstrapTable("load", processedData);
                 });
         })
