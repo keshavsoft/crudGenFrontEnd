@@ -6,9 +6,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
-  <title>
-    Maghuva
-  </title>
+    <title>
+        Maghuva
+    </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -376,7 +376,7 @@
                     <span>Delivery Bills</span>
                 </a>
             </li>
-            
+
         </ul>
     </aside>
     <!-- End Sidebar-->
@@ -399,8 +399,12 @@
         <section class="section">
             <div class="row">
                 <div class="col">
-                    <label for=""><h3>Bill Number: </h3></label>
-                    <label><h2 id="OrderId"></h2></label>
+                    <label for="">
+                        <h3>Bill Number: </h3>
+                    </label>
+                    <label>
+                        <h2 id="OrderId"></h2>
+                    </label>
                 </div>
             </div>
             <div class="row">
@@ -444,11 +448,21 @@
                                 <div class="col-md-8">
                                     <input kvs1="" id="Description" name="Description" min="1" step="1" max="1000000"
                                         data-dataattribute="Description" value="" data-clienteval="" type="text"
-                                        class="form-control"  autocomplete="off"
-                                        >
+                                        class="form-control" autocomplete="off">
                                     <div class="invalid-feedback " id="PcsClass">
                                         Should not be Empty!!
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="col-md-4 col-form-label">Mode of payment</label>
+
+                                <div class="col-md-8">
+                                    <select class="form-select " aria-label="Small select example" id="PaymentModeId">
+                                        <option value="Cash Bill" selected>Cash Bill</option>
+                                        <option value="UPI Bill">UPI Bill</option>
+                                        <option value="Card Bill">Card Bill</option>
+                                    </select>
                                 </div>
                             </div>
                             <!-- <button class="bs bs-btn-primary">Submit</button> -->
@@ -552,8 +566,8 @@
 
         };
         function inputFormatter(value, row, index) {
-        return '<input type="number" id="dicount-id'+row.pk+'" class="form-control" name="input-' + row.pk + '" />';
-    }
+            return '<input type="number" id="dicount-id' + row.pk + '" class="form-control" name="input-' + row.pk + '" />';
+        }
     </script>
 
 

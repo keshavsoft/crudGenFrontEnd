@@ -6,9 +6,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
-  <title>
-    Maghuva
-  </title>
+    <title>
+        Maghuva
+    </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -295,14 +295,6 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="../../Dashboard/Dashboard.html">
-                    <i class="bi bi-arrow-90deg-left"></i>
-                    <span>Parent</span>
-                </a>
-            </li>
-
-
             <!-- End Dashboard Nav -->
 
             <li class="nav-item">
@@ -312,7 +304,21 @@
                 </a>
             </li>
 
-            <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link " href="#">
+                    <i class="bi bi-journal-text"></i>
+                    <span>EST Bill</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="../VoucherAll/ShowAll.html">
+                    <i class="bi bi-journal-text"></i>
+                    <span>EST Status</span>
+                </a>
+            </li>
+
+            <!-- <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
                     <a class="nav-link " data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                         <i class="bi bi-journal-text"></i><span>Voucher</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -336,29 +342,29 @@
                     </ul>
                 </li>
 
-            </ul>
+            </ul> -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#Items-nav" data-bs-toggle="collapse" href="#">
-                  <i class="bi bi-pencil-square"></i><span>Items</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-pencil-square"></i><span>Items</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="Items-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                  <li>
-                    <a href="../Items/All/All.html">
-                      <i class="bi bi-circle"></i><span> All</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="../Items/Delivered/Delivered.html">
-                      <i class="bi bi-circle"></i><span> Delivered</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="../Items/Pending/Pending.html">
-                      <i class="bi bi-circle"></i><span> Pending</span>
-                    </a>
-                  </li>
+                    <li>
+                        <a href="../Items/All/All.html">
+                            <i class="bi bi-circle"></i><span> All</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Items/Delivered/Delivered.html">
+                            <i class="bi bi-circle"></i><span> Delivered</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Items/Pending/Pending.html">
+                            <i class="bi bi-circle"></i><span> Pending</span>
+                        </a>
+                    </li>
                 </ul>
-              </li>
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="../LastItemsCreate/Create.html">
                     <i class="bi bi-database"></i></i>
@@ -403,15 +409,15 @@
                                 <thead>
                                     <tr id="tableHeadRow">
                                         <th data-field="id" data-formatter="jFGlobalSerialColumn">#</th>
-                                        <th data-field="pk" data-filter-control="input">Bill #</th>
-                                        <th data-field="CustomerName">CustomerName</th>
-                                        <th data-field="Date">Delivery Date</th>
-                                        <th data-field="Description">Description</th>
-                                        <th data-field="ItemCount">Items</th>
-                                        <th data-field="DeleverCount">Delivered</th>
-                                        <th data-field="PendingCount">pending</th>
-                                        <th data-field="DateTime">DateTime</th>
-                                        <th data-formatter="operateFormatter">Enter</th>
+                                        <th data-field="pk" data-filter-control="input">EST #</th>
+                                        <th data-field="CustomerName">C Name</th>
+                                        <th data-field="GAmount">GAmount</th>
+                                        <th data-formatter="jFGlobalDateTime">Date</th>
+                                        <th data-field="Description">Des</th>
+                                        <th data-formatter="jFGlobalDeliveryDate">Delivery Date</th>
+                                        <th data-formatter="ItemCount">Items</th>
+                                        <th data-formatter="DeleverCount">Delivered</th>
+                                        <th data-formatter="PendingCount">pending</th>
                                         <th data-formatter="ItemsPrint">Print</th>
                                         <th data-formatter="deliveryFormatter">Delivery</th>
                                     </tr>
@@ -439,7 +445,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Return Print</h5>
+                    <h5 class="modal-title"> Print</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="ModalBody">
@@ -463,16 +469,42 @@
         function jFGlobalSerialColumn(value, row, index) {
             return index + 1;
         };
-
-        function operateFormatter(value, row, index) {
-            return [
-                `<a class="like" href="../VoucherItems/ShowAll.html?StichRef=${row.pk}" title="Enter">`,
-                '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">',
-                '<path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1"/>',
-                '</svg>',
-                '</a>  '
-            ].join('')
+        function jFGlobalDateTime(value, row, index) {
+            return new Date(row.DateTime).toLocaleDateString('en-GB')
         };
+        function jFGlobalDeliveryDate(value, row, index) {
+            return new Date(row.Date).toLocaleDateString('en-GB')
+        };
+        function ItemCount(value, row, index) {
+            // console.log("row:", row);
+            return [
+                `<a class="like btn btn-primary" href="../VoucherItems/ShowAll.html?StichRef=${row.pk}" title="printer"> ${row.ItemCount}`,
+                '</a>',
+
+            ].join('')
+
+        };
+        function DeleverCount(value, row, index) {
+            // console.log("row:", row);
+            return [
+                `<a class="like btn btn-secondary" href="../DeliverMenu/Delivery-Items/ShowAll.html?StichRef=${row.pk}" title="printer"> ${row.ItemCount}`,
+                '</a>',
+
+            ].join('')
+
+        };
+
+        function PendingCount(value, row, index) {
+            // console.log("row:", row);
+            return [
+                `<a class="like btn btn-warning" href="../Delivery/ShowAll.html?StichRef=${row.pk}" title="printer"> ${row.PendingCount}`,
+                '</a>',
+
+            ].join('')
+
+        };
+
+
         function deliveryFormatter(value, row, index) {
             return [
                 `<a class="like" href="../Delivery/ShowAll.html?StichRef=${row.pk}" title="Enter">`,
