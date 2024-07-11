@@ -1,7 +1,6 @@
 
 let StartFunc = async ({ inData }) => {
     let LocalData = inData[0];
-    console.log("local data: ",LocalData);
     jFLocalToInputOrderId({ inValue: LocalData.pk })
 };
 

@@ -6,7 +6,8 @@ let StartFunc = () => {
       console.log(row);
       return {
         FK: row.FK,
-        deliveryItemDescription: jFLocalDescription()
+        deliveryItemDescription: jFLocalDescription(),
+        PaymentMode: jFLocalPaymentMode()
       };
     }
   );
@@ -16,6 +17,15 @@ let StartFunc = () => {
 
 let jFLocalDescription = () => {
   let jVarLocalDescription = "Description";
+  let jVarLocalHtmlId = document.getElementById(jVarLocalDescription);
+
+  if ((jVarLocalHtmlId === null) === false) {
+    return jVarLocalHtmlId.value.trim();
+  }
+};
+
+let jFLocalPaymentMode = () => {
+  let jVarLocalDescription = "PaymentModeId";
   let jVarLocalHtmlId = document.getElementById(jVarLocalDescription);
 
   if ((jVarLocalHtmlId === null) === false) {
