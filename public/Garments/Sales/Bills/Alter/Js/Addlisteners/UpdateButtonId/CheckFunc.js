@@ -9,7 +9,7 @@ let StartFunc = () => {
         return false;
     };
 
-    if (jVarLocalGrossAmoutId.value > jVarLocalReturnAmountId.value) {
+    if (jVarLocalGrossAmoutId.value < jVarLocalReturnAmountId.value) {
         return false;
     };
 

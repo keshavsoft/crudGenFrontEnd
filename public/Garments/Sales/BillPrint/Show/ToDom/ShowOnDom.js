@@ -7,11 +7,11 @@ let StartFunc = async ({ inFolderName, inFileName, inItemName, inProjectName, in
     let jVarLocalRowPk = ReturnRowPK();
     let jVarLocalData = await FromNode();
 
-    let LocalBillsCollectionData = jVarLocalData.JsonData;
+    let LocalBillsCollectionData = jVarLocalData;
     localStorage.setItem("BillData", JSON.stringify(LocalBillsCollectionData));
 
-    if (jVarLocalData.KTF) {
-        let localindataJson = jVarLocalData.JsonData
+    if (jVarLocalData) {
+        let localindataJson = jVarLocalData
         ShowOnDom({ inData: localindataJson, inShowSuccess });
 
         await StartFuncInventoryGrid({ inFolderName, inFileName, inItemName, inProjectName, inShowSuccess, inRowPk: jVarLocalRowPk.RowPK })
