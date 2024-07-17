@@ -28,6 +28,7 @@ let ShowOnDomTableBody = async ({ inData }) => {
         var template = Handlebars.compile(jVarLocalTemplate.HtmlString);
 
         inData.forEach(element => {
+            element.DateTime = new Date(element.DateTime).toLocaleDateString('en-GB')
             let jVarLocalToShowHtml = template(element);
 
             jVarLocalTableBodyId.insertAdjacentHTML("afterbegin", jVarLocalToShowHtml);

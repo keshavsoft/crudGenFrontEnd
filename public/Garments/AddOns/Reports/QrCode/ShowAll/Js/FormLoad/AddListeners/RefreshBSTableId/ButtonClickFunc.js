@@ -27,14 +27,14 @@ let jFLocalPromiseAll = async () => {
 
         if (LoopInideFind === undefined === false) if ("Date" in LoopInideFind) LoopQrCode.Purchased = "true";
         if (LoopInideFind === undefined === false) if ("Date" in LoopInideFind) LoopQrCode.PurchaseDate = LoopInideFind.Date;
+        let LoopInideSales = c.value.find(LoopPurchase => LoopPurchase.pk == LoopQrCode.pk);
 
-        let LoopInideSales = c.value.find(LoopPurchase => LoopPurchase.pk === LoopQrCode.pk);
         // if (LoopQrCode.pk === "1") {
         //     console.log(" LoopQrCode.pk : ", LoopQrCode, LoopInideSales,c);
         // };
         if (LoopInideSales === undefined === false) LoopQrCode.Sold = "Sold";
 
-        let LoopInideSalesReturn = d.value.find(LoopSaleReturn => LoopSaleReturn.QrCode === LoopQrCode.pk);
+        let LoopInideSalesReturn = d.value.find(LoopSaleReturn => LoopSaleReturn.QrCode == LoopQrCode.pk);
 
         if (LoopInideSalesReturn === undefined === false) LoopQrCode.ReturnStatus = "Return";
 

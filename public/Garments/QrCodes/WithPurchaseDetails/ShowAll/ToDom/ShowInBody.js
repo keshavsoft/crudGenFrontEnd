@@ -21,6 +21,7 @@ let ShowOnDomTableBody = async ({ inData }) => {
 
         inData.forEach((element,index) => {
             element.index = index + 1;
+            element.DateTime = new Date(element.DateTime).toLocaleDateString('en-GB');
             let jVarLocalToShowHtml = template(element);
 
             jVarLocalTableBodyId.insertAdjacentHTML("afterbegin", jVarLocalToShowHtml);

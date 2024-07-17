@@ -4,7 +4,7 @@ let StartFunc = async () => {
     let jVarLocalPosData = await jFpos();
     let jVarLocalBillsQrCode = await jFBillsQrCode();
 
-    StartFuncShowToDom({ inDataToShow: jVarLocalPosData.JsonData, inBillsQrCodeData: jVarLocalBillsQrCode });
+    StartFuncShowToDom({ inDataToShow: jVarLocalPosData, inBillsQrCodeData: jVarLocalBillsQrCode });
 };
 
 const jFpos = async () => {
