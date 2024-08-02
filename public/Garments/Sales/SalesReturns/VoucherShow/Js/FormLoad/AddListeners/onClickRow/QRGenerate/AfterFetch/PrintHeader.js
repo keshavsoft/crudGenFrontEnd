@@ -15,7 +15,7 @@ const StartFunc = ({ InData }) => {
     k1.innerHTML += `---------------------------------------------\n`
     k1.innerHTML += `               <span class="inner-pre" style="font-size: 16px; font-weight: bold;">RETURN INVOICE</span> \n`
     k1.innerHTML += `---------------------------------------------\n`
-    k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">No          :  ${LocalInData.UuId}</span>\n`;
+    k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">SR No       :  ${LocalInData.UuId}</span>\n`;
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Customer    :  ${LocalInData.CustomerName}</span>\n`;
     k1.innerHTML += `<span class="inner-pre" style="font-size: 16px; font-weight: bold;">Des         : ${LocalSalesDes}</span>\n`;
     k1.innerHTML += `----------------------------------------------\n`
