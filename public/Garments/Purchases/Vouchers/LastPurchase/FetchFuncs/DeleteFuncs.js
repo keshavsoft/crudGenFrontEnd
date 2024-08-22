@@ -1,45 +1,22 @@
-let StartFunc = async ({ inFolderName, inFileName, inItemName, inRowPK,MainRowPK, inProjectName }) => {
+import { StartFunc as Generation } from "./Generation.js";
 
-    try {
-        let LocalReturnObject = { KTF: false, KResult: "", JsonData: {} };
+let StartFunc = async ({ inRowPK }) => {
+    if (await Generation() === true) {
 
-        let inFetchPostData = {
-            FileName: `${inFileName}.json`,
-            FolderName: inFolderName,
-            InsertKey: "InvGrid",
-            ItemName: inItemName,
-            MainRowPK,
-            RowPK: inRowPK,
-            ScreenName: "Create"
-        };
-
-        // let jVarLocalFetchUrl = `/${inProjectName}/API/Data/FromFolder/FromFile/Items/FromDataFolder/RowData`;
-        let jVarLocalFetchUrl = `/${inProjectName}/API/Data/FromFolder/FromFile/ScreensFromDisplayJson/SubTable/Row/Delete/FromRowPK`;
+        let jVarLocalFetchUrl = `/bin/PurchaseItems/${inRowPK}`;
 
         let jVarLocalFetchHeaders = {
-            method: "POST",
+            method: "DELETE",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(inFetchPostData)
+            }
         };
 
         const response = await fetch(jVarLocalFetchUrl, jVarLocalFetchHeaders);
-        const data = await response.json();
-
-        if (data.KTF === false) {
-            LocalReturnObject.KReason = data.KReason;
-            return await LocalReturnObject;
-        };
-
-        LocalReturnObject.JsonData = data.JsonData;
-
-        LocalReturnObject.KTF = true;
-        return await LocalReturnObject;
-
-    } catch (error) {
-        console.log("error:", error);
+        if (response.status === 200) {
+            window.location.href = ""
+        }
     }
 
 };

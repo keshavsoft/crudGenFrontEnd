@@ -50,16 +50,11 @@ let StartFunc = async ({ inFolderName, inFileName, inItemName, inProjectName, in
             if (jVarLocalDataSetKeyNeeded in jVarLocalDataSet) {
                 let jVarLocalRowPK = jVarLocalDataSet[jVarLocalDataSetKeyNeeded];
 
-                let jVarLocalFromDelete = await DeleteFuncsStartFunc({
-                    inFolderName, inFileName, inItemName,
-                    inProjectName,
-                    MainRowPK:localMainRowPK,
+                await DeleteFuncsStartFunc({
                     inRowPK: jVarLocalRowPK
                 });
 
-                if (jVarLocalFromDelete.KTF) {
-                    window.location = `?FromDelete=true&RowPK=${localMainRowPK}`;
-                };
+
             };
         };
     });
