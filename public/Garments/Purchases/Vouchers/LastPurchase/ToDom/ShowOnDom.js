@@ -21,7 +21,7 @@ let ShowOnDom = async ({ inData, inShowSuccess }) => {
     let jVarLocalDateId = document.getElementById("DateId");
     let jVarLocalAliasName = document.getElementById("AliesNameId");
     let jVarLocalTotalAmount = document.getElementById("TotalAmountId");
-    localStorage.setItem("RowPK", inData.pk)
+    // localStorage.setItem("RowPK", inData.pk)
     if (jVarLocalVoucherNameId !== null) {
         jVarLocalVoucherNameId.innerHTML = inData.SupplierName;
     };

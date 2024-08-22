@@ -6,6 +6,8 @@ let FromNode = async () => {
 
         const response = await fetch(jVarLocalFetchUrl);
         const data = await response.json();
+        localStorage.setItem("RowPK", data.pk)
+
         return await data;
 
     } catch (error) {

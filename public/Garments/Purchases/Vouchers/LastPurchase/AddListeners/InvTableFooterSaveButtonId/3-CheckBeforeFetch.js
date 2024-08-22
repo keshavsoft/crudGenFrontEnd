@@ -1,8 +1,12 @@
-let StartFunc = () => {
+import { StartFunc as Generation } from "./Generation.js";
+
+let StartFunc = async () => {
+
     if (jFLocalQtyId() === false) return false;
     if (jFLocalRateId() === false) return false;
     if (jFLocalMRPId() === false) return false;
     if (jFLocalAmountId() === false) return false;
+    if (await Generation() === false) return false;
 
     return true;
 };
