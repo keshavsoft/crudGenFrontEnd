@@ -10,7 +10,7 @@ let StartFunc = async () => {
 
     if (jVarLocalDataNeeded !== null) {
         if (jVarLocalDataNeeded) {
-            StartFuncAfterFetch({ inFetchData: jVarLocalDataNeeded, inBodyData: jVarLocalFetchHeaders });
+            await StartFuncAfterFetch({ inFetchData: jVarLocalDataNeeded, inBodyData: jVarLocalFetchHeaders });
         };
     };
 };
