@@ -2,7 +2,7 @@ let StartFunc = async () => {
     let LocalUrl = `/bin/pos/DataOnly`
     let localfetch = await fetch(LocalUrl);
     let data = await localfetch.json();
-    console.log("data: ", data);
+    // console.log("data: ", data);
     let jVarLocalDataListId = document.getElementById("SuggestCustomerNumbers");
 
     data.forEach(element => {
