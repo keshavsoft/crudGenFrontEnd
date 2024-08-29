@@ -1,0 +1,29 @@
+[
+    {
+        "field": "id",
+        "title": "#",
+        "formatter": "jFLocalSerialColumn"
+    },
+    {
+        "field": "BranchName",
+        "title": "Branch Name",
+        "formatter": "jFLocalToBranchDashboard"
+    },
+    {
+        "field": "DataCount",
+        "title": "Total Orders",
+        "footerFormatter":"TotalItems",
+        "align":"right"
+    },
+    {
+        "field": "OrderDate",
+        "title": "LastOrde Date",
+          "filterControl": "input"
+    },
+    {
+        "field": "SentInterVal",
+        "titleTooltip": "SentInterVal",
+        "title": "Time Span",
+        "filterControl": "input"
+    }
+]
