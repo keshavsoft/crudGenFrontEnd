@@ -1,0 +1,48 @@
+{
+    "tableAttributes": {
+        "data-show-columns": "true",
+        "data-search": "true",
+        "data-pagination": "true"
+    },
+    "loadObject": {
+        "data" : [],
+        "sortName" : "ItemName",
+        "sortOrder" : "asc"
+    },
+    "coloumnAttributes":{
+        "CategoryAttributes":{
+            "data-field": "Category",
+            "data-sortable": "true",
+            "data-sort-name": "Category",
+            "data-sort-order": "desc"
+        },
+        "ItemNameAttributes":{
+            "data-field": "ItemName",
+            "data-sortable": "true",
+            "data-sort-name": "ItemName",
+            "data-sort-order": "desc"
+        },
+        "PiecesAttributes":{
+            "data-field": "Pcs",
+            "data-sortable": "true",
+            "data-sort-name": "Pcs",
+            "data-sort-order": "desc",
+            "data-halign":"left",
+            "data-align":"right"
+        },
+        "WashTypeAttributes":{
+            "data-field": "Category",
+            "data-sortable": "true",
+            "data-sort-name": "Category",
+            "data-sort-order": "desc"
+        },
+        "DryWashRateAttributes":{
+            "data-field": "DryWashRate",
+            "data-sortable": "true",
+            "data-sort-name": "Pcs",
+            "data-sort-order": "desc",
+            "data-halign":"left",
+            "data-align":"right"
+        }
+    }
+}

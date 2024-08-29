@@ -1,0 +1,34 @@
+{
+    "tableAttributes":{
+        "data-toolbar":"#toolbar",
+         "data-search":"true",
+         "data-searchable":"true",
+        "data-detail-formatter":"detailFormatter",
+        "data-id-field":"pk",
+        "data-show-toggle":"true",
+        "data-show-pagination-switch":"true",
+        "data-pagination":"true"
+    },
+    "coloumnAttributes":{
+        "MobileAttributes":{
+            "data-field": "Password",
+            "data-sortable": "true",
+            "data-sort-name": "Mobile",
+            "data-sort-order": "desc"
+        },
+        "CustomerNameAttribute":{
+            "data-field": "UserName",
+            "data-filter-control": "input",
+            "data-sortable": "true",
+            "data-sort-name": "CustomerName",
+            "data-sort-order": "desc"
+        },
+        "CityAttribute":{
+            "data-field": "Mail",
+            "data-sortable": "true",
+            "data-sort-name": "City",
+            "data-sort-order": "desc"
+        }
+    }
+   
+}

@@ -1,0 +1,12 @@
+{
+    "tableAttributes":{
+        "data-show-columns": "true",
+        "data-search": "true",
+        "data-search-highlight": "true",
+        "data-searchable": "true",
+        "data-show-columns-toggle-all": "true",
+        "data-minimum-count-columns": "3",
+        "data-id-field": "pk"
+    }
+   
+}
