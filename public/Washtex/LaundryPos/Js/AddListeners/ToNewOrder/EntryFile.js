@@ -6,7 +6,7 @@ const StartFunc =()=>{
         localStorage.setItem("BranchName", jVarLocalBruchSelectInputValue);
 
         // window.location.href = `/LaundryPos/Dashboard/Dashboard.html?BranchName=${jVarLocalBruchSelectInputValue}`;
-        window.location.href = `/Laundry/Branch/Orders/NewOrder/Customer.html`;
+        window.location.href = `/Washtex/Laundry/Branch/Orders/NewOrder/Customer.html`;
     };
 }
 
