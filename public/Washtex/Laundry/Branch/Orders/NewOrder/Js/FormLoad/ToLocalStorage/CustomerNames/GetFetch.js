@@ -1,4 +1,4 @@
-import ConfigJson from '../../../../Config.json' with {type: 'json'};
+//import ConfigJson from '../../../../Config.json' with {type: 'json'};
 import urlJson from './url.json' with {type: 'json'};
 
 
