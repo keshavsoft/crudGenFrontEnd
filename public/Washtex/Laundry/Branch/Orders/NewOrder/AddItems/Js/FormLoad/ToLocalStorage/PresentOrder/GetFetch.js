@@ -6,7 +6,7 @@ let StartFunc = async () => {
     let jVarLocalTableName = localStorage.getItem("BranchName");
     let jVarLocalLocalStorageKey = ConfigJson.localStorageKeys.OrderKey;
 
-    let jVarLocalFetchUrl = `/${jVarLocalSubRoute}/${jVarLocalTableName}/Show/MaxRow`;
+    let jVarLocalFetchUrl = `/${jVarLocalSubRoute}/${jVarLocalTableName}/MaxRow`;
 
     let jVarLocalFromFetch = await fetch(jVarLocalFetchUrl);
     let jVarLocalFromFetchJson = await jVarLocalFromFetch.json();
