@@ -1,5 +1,7 @@
+import UrlJson from "./Url.json" with { type: "json" };
+
 let StartFunc = async () => {
-    let jVarLocalFetchUrl = `/bin/Factory/FactoryScan/DataOnly`;
+    let jVarLocalFetchUrl = `${UrlJson.Url}`;
     let response = await fetch(jVarLocalFetchUrl);
     let data = await response.json();
 
