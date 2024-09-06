@@ -5,9 +5,13 @@ import { StartFunc as StartFuncItemDetails } from "./Promises/ShowItemDetails/En
 let StartFunc = async () => {
     const [a, b] = await Promise.all([StartFuncVoucherDetails(), StartFuncItemDetails()]);
 
-    if (a.KTF && b.KTF) {
-        let jVarLocalDcData = a.JsonData;
-        let jVarLocalItemsData = b.JsonData;
+    if (a && b) {
+        let jVarLocalDcData = a;
+        console.log("jVarLocalDcData:",jVarLocalDcData);
+        
+        let jVarLocalItemsData = b;
+        console.log("jVarLocalItemsData",jVarLocalItemsData);
+        
         // let jVarLocalFactoryName = getUrlQueryParams({ inGetKey: "BranchName" });
         let jVarLocalFactoryName = localStorage.getItem("FactoryName");
 
