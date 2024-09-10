@@ -3,7 +3,7 @@
 let StartFunc = async ({ inBodyData }) => {
     let jVarLocalBodyData = inBodyData;
 
-    let jVarLocalFetchUrl = `/bin/completion/QrCodeDetails`;
+    let jVarLocalFetchUrl = `/binV3/CompletionScan/Show/DataOnly`;
 
 
     let response = await fetch(jVarLocalFetchUrl);
