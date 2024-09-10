@@ -3,7 +3,7 @@
 let StartFunc = async ({ inBodyData }) => {
     let jVarLocalBodyData = inBodyData;
 
-    let jVarLocalFetchUrl = `/bin/Factory/FactoryScan/DataOnly`;
+    let jVarLocalFetchUrl = `/binV3/BranchScan/Show/DataOnly`;
 
 
     let response = await fetch(jVarLocalFetchUrl);

@@ -1,5 +1,5 @@
 let StartFunc = async () => {
-    let jVarLocalFetchUrl = `/bin/completion/QrCodeDetails/DataOnly`;
+    let jVarLocalFetchUrl = `/binV3/CompletionScan/Show/DataOnly`;
     let response = await fetch(jVarLocalFetchUrl);
     let jVarLocalResponse = await response.json();
 

@@ -3,7 +3,7 @@
 let StartFunc = async ({ inBodyData }) => {
     let jVarLocalBodyData = inBodyData;
 
-    let jVarLocalFetchUrl = `/bin/Washing/QrCodeDetails/DataOnly`;
+    let jVarLocalFetchUrl = `/binV3/WashingScan/Show/DataOnly`;
 
 
     let response = await fetch(jVarLocalFetchUrl);
