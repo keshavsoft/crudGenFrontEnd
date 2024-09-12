@@ -37,6 +37,12 @@
         "align": "right"
     },
     {
+        "field": "ReturnAmount",
+        "title": "ReturnAmt",
+        "footerFormatter": "jFLocalDisRateTotal",
+        "align": "right"
+    },
+    {
         "field": "BasicAmt",
         "title": "Basic Amt",
         "footerFormatter": "jFLocalBasicAmtTotal",
@@ -61,7 +67,7 @@
         "align": "right"
     },
     {
-        "field": "TotalAmount",
+        "field": "AllTotalAmount",
         "title": "Total Amt",
         "footerFormatter": "jFTotalAmountTotal",
         "halign": "left",
